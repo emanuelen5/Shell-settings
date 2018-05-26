@@ -103,10 +103,8 @@ dynamic_echo_git_color='$(
       echo -n "'${IGreen}'";
     elif [ -n "$git_has_unstaged_changes" ]; then
       echo -n "'${IRed}'";
-    elif [ -n "$git_is_updated" ]; then
-      echo -n "'${IYellow}'";
     else
-      echo -n "'${ICyan}'";
+      echo -n "'${IYellow}'";
     fi
     echo -n "$branch_name";
     if [ -n "$git_is_ahead" ] || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ]; then echo -n ", "; fi;
