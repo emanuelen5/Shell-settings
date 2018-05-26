@@ -117,7 +117,7 @@ dynamic_echo_git_color='$(
     if [ -n "$git_is_ahead" ]; then echo -n "'${ICyan}'A"; fi;
     if [ -n "$git_has_staged_changes" ]; then echo -n "'${IYellow}'S"; fi;
     if [ -n "$git_has_unstaged_changes" ]; then echo -n "'${IRed}'M"; fi;
-    if [ -n "$git_has_untracked_files" ]; then echo -n "'${IYellow}'U"; fi;
+    if [ -n "$git_has_untracked_files" ]; then echo -n "'${IYellow}'?"; fi;
     echo -n "'${Color_Off}')";
   fi;
 )'
