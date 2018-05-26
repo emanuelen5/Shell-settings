@@ -91,12 +91,19 @@ Jobs="\j"
 # This is evaluated when the start for the shell row is printed
 dynamic_echo_git_color='$(
   status=`git status 2>/dev/null`;
+  branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
   if (`echo $status | grep -q "nothing to commit"`); then
-    echo "'${IGreen}'";
+#  if (`echo $status | grep -q "nothing to commit"` || `echo $status | grep -q "Your branch is ahead"`); then
+    echo -n "'${IGreen}'";
   elif (`echo $status | grep -q "up-to-date"`); then
-    echo "'${IYellow}'";
+    echo -n "'${IYellow}'";
+  elif (`echo $status | grep -q "Changes not staged for commit"`); then
+    echo -n "'${IRed}'";
   else
-    echo "'${IRed}'";
+    echo -n "'${ICyan}'";
   fi
+  if [ -n "$branch_name" ]; then
+    echo -n " $branch_name";
+  fi;
 )'
-export PS1="${IBlack}${Time12h}${dynamic_echo_git_color}\$(__git_ps1)${Green} \$ ${Color_Off}"
+export PS1="${IBlack}${Time12h}${dynamic_echo_git_color}${Green} \$ ${Color_Off}"
