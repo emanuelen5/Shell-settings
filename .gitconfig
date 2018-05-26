@@ -1,0 +1,24 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Erasmus Cedernaes
+	email = erasmus.cedernaes@gmail.com
+[color]
+	ui = auto
+[alias]
+        log2 = log --graph --decorate
+	graph = log --graph --decorate --oneline --full-history --all
+	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
+	nocommit = log server..master
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
+	now = ! GIT_COMMITTER_DATE=\"`date`\" git commit --amend --date \"`date`\"
+	diffs = diff --stat
+	graph2 = log --graph --pretty=format:'%C(yellow)%h %Cred%<(50,trunc)%s%C(cyan)%<(30,trunc)%d%n        %Creset%ad, %<(15)%ar %Cgreen%an' --date=short
+[diff]
+	tool = vimdiff
+[difftool "vimdiff"] 
+	cmd = vim -f -d -c 'wincmd l' -c 'cd "$GIT_PREFIX"' "$LOCAL" "$REMOTE"
+[push]
+	default = simple
+[log]
+	follow = true
+	decorate = short
