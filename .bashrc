@@ -1,4 +1,4 @@
-. ~/Scripts/.bash_colors.sh
+. ~/Scripts/bash_colors.sh
 
 # Defaults
 export EDITOR=$(which vim)
@@ -6,7 +6,8 @@ export VISUAL=$(which vim)
 alias python=python3
 
 # Setting up a clean terminal
-PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
+#PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
+. ~/Scripts/PS1_setup.sh
 
 # For stopping annoying loud bells
 set bell-style visible
