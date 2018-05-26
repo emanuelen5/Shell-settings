@@ -91,8 +91,13 @@ Jobs="\j"
 # This is evaluated when the start for the shell row is printed
 dynamic_echo_git_color='$(
   status=`git status 2>/dev/null`;
-  branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
   if [ $? -eq 0 ]; then
+    branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
+
+    # If not on a branch
+    if [ -z "$branch_name" ]; then
+      branch_name=`echo $status | grep -Po "(?<=HEAD detached at )\\S+"`;
+    fi;
     echo -n "'${Color_Off}' (";
     git_is_clean=`echo $status | grep "nothing to commit"`;
     git_is_updated=`echo $status | grep "up-to-date"`;
