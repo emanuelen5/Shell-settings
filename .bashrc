@@ -1,4 +1,4 @@
-. ~/Scripts/.bash_colors.sh
+. ~/Scripts/bash_colors.sh
 
 # Defaults
 export EDITOR=$(which vim)
@@ -7,7 +7,8 @@ export DISPLAY=localhost:0.0
 alias python='winpty python.exe'
 
 # Setting up a clean terminal
-PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
+#PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
+. ~/Scripts/PS1_setup.sh
 
 # For stopping annoying loud bells
 set bell-style visible
