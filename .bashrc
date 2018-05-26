@@ -3,7 +3,8 @@
 # Defaults
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
-alias python=python3
+export DISPLAY=localhost:0.0
+alias python='winpty python.exe'
 
 # Setting up a clean terminal
 PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
