@@ -162,7 +162,7 @@ NewLine="\n"
 Jobs="\j"
 
 # This is evaluated when the start for the shell row is printed
-dynamic_echo_git_color () {
+ps1_git () {
   status=`git status 2>/dev/null`;
   if [ $? -eq 0 ]; then
     branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
@@ -195,4 +195,4 @@ dynamic_echo_git_color () {
   fi;
 }
 
-export PS1="${eIBlack}${Time12h}\$(dynamic_echo_git_color)${eGreen} \$ ${eColor_Off}"
+export PS1="${eIBlack}${Time12h}\$(ps1_git)${eGreen} \$ ${eColor_Off}"
