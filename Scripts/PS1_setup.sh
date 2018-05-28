@@ -89,7 +89,7 @@ NewLine="\n"
 Jobs="\j"
 
 # This is evaluated when the start for the shell row is printed
-dynamic_echo_git_color='$(
+dynamic_echo_git_color () {
   status=`git status 2>/dev/null`;
   if [ $? -eq 0 ]; then
     branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
@@ -120,5 +120,6 @@ dynamic_echo_git_color='$(
     if [ -n "$git_has_untracked_files" ]; then echo -n "'${IYellow}'?"; fi;
     echo -n "'${Color_Off}')";
   fi;
-)'
-export PS1="${IBlack}${Time12h}${dynamic_echo_git_color}${Green} \$ ${Color_Off}"
+}
+
+export PS1="${IBlack}${Time12h}\$(dynamic_echo_git_color)${Green} \$ ${Color_Off}"
