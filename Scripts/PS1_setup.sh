@@ -98,7 +98,7 @@ dynamic_echo_git_color () {
     if [ -z "$branch_name" ]; then
       branch_name=`echo $status | grep -Po "(?<=HEAD detached at )\\S+"`;
     fi;
-    echo -n "'${Color_Off}' (";
+    echo -n "${Color_Off} (";
     git_is_clean=`echo $status | grep "nothing to commit"`;
     git_is_updated=`echo $status | grep "up-to-date"`;
     git_is_ahead=`echo $status | grep "Your branch is ahead of"`;
@@ -106,19 +106,19 @@ dynamic_echo_git_color () {
     git_has_unstaged_changes=`echo $status | grep "Changes not staged for commit"`;
     git_has_untracked_files=`echo $status | grep "Untracked files:"`;
     if [ -n "$git_is_clean" ]; then
-      echo -n "'${IGreen}'";
+      echo -n "${IGreen}";
     elif [ -n "$git_has_unstaged_changes" ]; then
-      echo -n "'${IRed}'";
+      echo -n "${IRed}";
     else
-      echo -n "'${IYellow}'";
+      echo -n "${IYellow}";
     fi
     echo -n "$branch_name";
     if [ -n "$git_is_ahead" ] || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ] || [ -n "$git_has_untracked_files" ]; then echo -n ", "; fi;
-    if [ -n "$git_is_ahead" ]; then echo -n "'${ICyan}'A"; fi;
-    if [ -n "$git_has_staged_changes" ]; then echo -n "'${IYellow}'S"; fi;
-    if [ -n "$git_has_unstaged_changes" ]; then echo -n "'${IRed}'M"; fi;
-    if [ -n "$git_has_untracked_files" ]; then echo -n "'${IYellow}'?"; fi;
-    echo -n "'${Color_Off}')";
+    if [ -n "$git_is_ahead" ]; then echo -n "${ICyan}A"; fi;
+    if [ -n "$git_has_staged_changes" ]; then echo -n "${IYellow}S"; fi;
+    if [ -n "$git_has_unstaged_changes" ]; then echo -n "${IRed}M"; fi;
+    if [ -n "$git_has_untracked_files" ]; then echo -n "${IYellow}?"; fi;
+    echo -n "${Color_Off})";
   fi;
 }
 
