@@ -86,6 +86,7 @@ Date="\d" # The data, in "Weekday Month Date" format (e.g., "Tue May 26")
 hostname="\h" # The hostname, up to the first "." (e.g. deckard)
 Hostname="\H" # The whole hostname (e.g. deckard.SS64.com)
 
+Time21hs="\A" # The time in 24-hour HH:MM format
 Time24h="\t" # The time in 24-hour HH:MM:SS format
 Time12h="\T" # The time in 12-hour HH:MM:SS format
 Time12a="\@" # The time in 12-hour am/pm format
