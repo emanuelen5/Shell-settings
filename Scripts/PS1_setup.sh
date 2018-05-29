@@ -81,12 +81,31 @@ On_ICyan="\[\033[0;106m\]"    # Cyan
 On_IWhite="\[\033[0;107m\]"   # White
 
 # Various variables you might want for your PS1 prompt instead
-Time12h="\T"
-Time12a="\@"
-PathShort="\w"
-PathFull="\W"
-NewLine="\n"
-Jobs="\j"
+# see https://ss64.com/bash/syntax-prompt.html
+Date="\d" # The data, in "Weekday Month Date" format (e.g., "Tue May 26")
+hostname="\h" # The hostname, up to the first "." (e.g. deckard)
+Hostname="\H" # The whole hostname (e.g. deckard.SS64.com)
+
+Time24h="\t" # The time in 24-hour HH:MM:SS format
+Time12h="\T" # The time in 12-hour HH:MM:SS format
+Time12a="\@" # The time in 12-hour am/pm format
+PathShort="\w" # The current working directory
+PathFull="\W" # The basename of $PWD
+Jobs="\j" # The number of jobs currently managed by the shell
+ShellBasename="\l" # The basename of the shell's terminal device name
+ShellName="\s" # The name of the shell. The basename of $0 (portion following the final slash)
+Username="\u" # The username of the current user
+BashVersion="\v" # The version of Bash (e.g. 2.00)
+BashRelease="\V" # The release of Bash. Version + patchlevel (e.g. 2.00.0)
+HistoryNumber="\!" # The history number of this command
+CommandNumber="\#" # The command number of this command
+#"\$" - If you are not root: inserts "$"; if you are root "#"
+#"\nnn" - The character whose ASCII code is the octal value nnn
+#\n - A newline
+#\r - Carriage return
+#\e - An escape character (typically a color code)
+#\a - A bell character
+#\\ - A backslash
 
 # This is evaluated when the start for the shell row is printed
 dynamic_echo_git_color='$(
