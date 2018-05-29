@@ -141,4 +141,4 @@ dynamic_echo_git_color='$(
     echo -n "'${Color_Off}')";
   fi;
 )'
-export PS1="${IBlack}${Time12h}${dynamic_echo_git_color}${Green} \$ ${Color_Off}"
+export PS1="${IBlack}${CommandNumber} ${Time24h} ${Blue}${PathShort}${dynamic_echo_git_color}${Green} \n\$ ${Color_Off}"
