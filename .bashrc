@@ -14,6 +14,7 @@ set bell-style visible
 
 # Linking scripts
 alias start-ssh-agent=". ~/Scripts/ssh_agent_load.sh"
+start-ssh-agent -r > /dev/null
 
 # Nice commands
 alias where='echo -e "\b\r\e[K$YELLOW$USER$RED@$GREEN$HOSTNAME:$BLUE$PWD$NC "'
