@@ -18,3 +18,4 @@ alias start-ssh-agent=". ~/Scripts/ssh_agent_load.sh"
 # Nice commands
 alias where='echo -e "\b\r\e[K$YELLOW$USER$RED@$GREEN$HOSTNAME:$BLUE$PWD$NC "'
 alias clc='clear && clear'
+alias grep='grep --color'
