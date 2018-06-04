@@ -3,10 +3,19 @@
 
 # Attempt to find old agents
 find_ssh_agents () {
-  find /tmp/ssh* -name "agent.*" 2>/dev/null |
-    while read f; do
-      echo "$f";
-    done
+  ps x | grep "ssh-agent" |
+    sed "$ d" | # Remove last line (current command will match as well)
+    sed -rn 's/ *([0-9]+).*/\1/p' | # Get PIDs
+  while read pid; do
+    echo "$pid";
+  done
+}
+
+# Get the corresponding SSH_AUTH_SOCKET for a PID
+get_ssh_auth_socket () {
+  ssh_agent_pid="$1"
+  expected_socket_id=$(($ssh_agent_pid - 1))
+  echo `find /tmp/ -type s -name "agent.$expected_socket_id" 2>/dev/null`
 }
 
 TMP_RESTORE=`echo "$@" | grep -Po '\-[^-]*r'`
@@ -15,9 +24,8 @@ TMP_RESTORE=`echo "$@" | grep -Po '\-[^-]*r'`
 if [ `find_ssh_agents | wc -l` -gt 0 ]; then
 
   # Recover the first one's ID and file handle
-  SSH_AUTH_SOCK=`find_ssh_agents | head -1`
-  SSH_AGENT_PID=$((`echo "$SSH_AUTH_SOCK" | grep -Po "\\d+$"` + 1))
-
+  SSH_AGENT_PID=`find_ssh_agents | sort -n | head -1`
+  SSH_AUTH_SOCK=`get_ssh_auth_socket $SSH_AGENT_PID`
   if [ -z "`ps --pid $SSH_AGENT_PID | grep 'ssh-agent'`" ]; then
     echo "Could not find the process corresponding to the agent..."
     echo "Something might be wrong."
