@@ -1,3 +1,4 @@
+[ -f /etc/skel/.bashrc ] && source /etc/skel/.bashrc
 . ~/Scripts/bash_colors.sh
 
 # Defaults
