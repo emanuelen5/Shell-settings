@@ -215,4 +215,4 @@ ps1_git () {
   fi;
 }
 
-export PS1="${eIBlack}${CommandNumber} ${Time24h} ${eBlue}${PathShort}\$(ps1_git)${eGreen} \n\$ ${eColor_Off}"
+export PS1="${eIBlack}${CommandNumber} ${Time24h} ${eBlue}${PathShort}\$(ps1_git) \n${eGreen}\$ ${eColor_Off}"
