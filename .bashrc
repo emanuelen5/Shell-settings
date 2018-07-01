@@ -10,6 +10,7 @@ export umask=002
 # Setting up a clean terminal
 #PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
 . ~/Scripts/PS1_setup.sh
+. ~/Scripts/cd_enter_exit.sh
 
 # For stopping annoying loud bells
 set bell-style visible
