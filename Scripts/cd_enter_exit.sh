@@ -1,5 +1,9 @@
 function cd() {
   test -r .exit.sh && . .exit.sh
-  builtin cd $1
+  if [ $# = 0 ]; then
+    builtin cd
+  else
+    builtin cd "$1"
+  fi
   test -r .enter.sh && . .enter.sh
 }
