@@ -4,7 +4,6 @@
 # Defaults
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
-alias python=python3
 export umask=002
 
 # Setting up a clean terminal
