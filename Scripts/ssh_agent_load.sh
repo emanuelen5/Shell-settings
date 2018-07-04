@@ -1,5 +1,6 @@
 #!/bin/sh
 # Use argument "-r" to only try to restore, not create a new process
+# User argument "-R" to restart (kill existing agents, and start a new)
 
 # Attempt to find old agents
 find_ssh_agents () {
@@ -19,9 +20,14 @@ get_ssh_auth_socket () {
 }
 
 TMP_RESTORE=`echo "$@" | grep -Po '\-[^-]*r'`
+TMP_RESTART=`echo "$@" | grep -Po '\-[^-]*R'`
+
+if [ -n "$TMP_RESTART" ]; then
+  kill $(find_ssh_agents)
+fi
 
 # Check if there are any open agents
-if [ `find_ssh_agents | wc -l` -gt 0 ]; then
+if [ -z "$TMP_RESTART" ] && [ `find_ssh_agents | wc -l` -gt 0 ]; then
 
   # Recover the first one's ID and file handle
   SSH_AGENT_PID=`find_ssh_agents | sort -n | head -1`
@@ -54,3 +60,4 @@ else
 fi;
 
 unset TMP_RESTORE
+unset TMP_RESTART
