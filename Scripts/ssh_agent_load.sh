@@ -43,7 +43,7 @@ else
 
   ## Start the SSH agent
   eval `ssh-agent -s` >& /dev/null
-  ssh-add
+  ssh-add-keys
 
   if [ -n "$SSH_AGENT_PID" ]; then
     echo "Added new agent $SSH_AGENT_PID ($SSH_AUTH_SOCK)"
