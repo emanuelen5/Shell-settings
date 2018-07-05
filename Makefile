@@ -4,4 +4,7 @@ setup-link:
 	@echo "Setting up symbolic links for files in ${HOME}"
 	@./link_install_files.sh $(shell pwd)
 
-.PHONY: setup-link
+test:
+	bats ${MAKEFILE_DIR}/Scripts/tests/cd_enter_exit.bats
+
+.PHONY: setup-link test
