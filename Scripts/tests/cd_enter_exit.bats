@@ -52,26 +52,25 @@ function compare_strings() {
   fi
 }
 
-@test ".enter.sh syntax error" {
-  expected_enter_string0=".enter.sh: line 1: syntax error near unexpected token \`syntax_failure'"
-  expected_enter_string1=".enter.sh: line 1: \`test ( syntax_failure )'"
-  echo "test ( syntax_failure )" > tmp/.enter.sh
+function cd_check_syntax_error() {
+  script_name="$1"
+  expected_string0="$script_name: line 1: syntax error near unexpected token \`syntax_failure'"
+  expected_string1="$script_name: line 1: \`test ( syntax_failure )'"
 
-  run cd tmp
+  cd tmp
+  echo "test ( syntax_failure )" > $script_name
+
+  run cd .
   echo "ouput: $output" 1>&2
   test $status -eq 0
-  compare_strings "$expected_enter_string0" "${lines[0]}"
-  compare_strings "$expected_enter_string1" "${lines[1]}"
+  compare_strings "$expected_string0" "${lines[0]}"
+  compare_strings "$expected_string1" "${lines[1]}"
+}
+
+@test ".enter.sh syntax error" {
+  cd_check_syntax_error .enter.sh
 }
 
 @test ".exit.sh syntax error" {
-  expected_exit_string0=".exit.sh: line 1: syntax error near unexpected token \`syntax_failure'"
-  expected_exit_string1=".exit.sh: line 1: \`test ( syntax_failure )'"
-  echo "test ( syntax_failure )" > tmp/.exit.sh
-
-  run cd ..
-  echo "ouput: $output" 1>&2
-  test $status -eq 0
-  compare_strings "$expected_exit_string0" "${lines[0]}"
-  compare_strings "$expected_exit_string1" "${lines[1]}"
+  cd_check_syntax_error .exit.sh
 }
