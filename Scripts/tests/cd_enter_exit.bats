@@ -22,3 +22,10 @@ teardown () {
   cd tmp; cd ..
   test -f tmp/exited
 }
+
+@test "Failure when directory does not exist" {
+  NON_EXISTING_DIRECTORY=tmp/_nonexistend_directory
+  test ! -d $NON_EXISTING_DIRECTORY # Precondition for testing
+  run cd $NON_EXISTING_DIRECTORY
+  test $status -ne 0
+}
