@@ -29,3 +29,44 @@ teardown () {
   run cd $NON_EXISTING_DIRECTORY
   test $status -ne 0
 }
+
+@test "Script exit status does not propagate" {
+  echo "false" > tmp/.enter.sh
+  echo "false" > tmp/.exit.sh
+
+  run cd tmp
+  test $status # Enter status
+
+  run cd ..
+  test $status # Exit status
+}
+
+function compare_strings() {
+  expected="$1"
+  actual="$2"
+  if [ ! "$expected" = "$actual" ]; then
+    echo "Strings differ" 1>&2
+    echo "  expected: '$expected'" 1>&2
+    echo "  got:      '$actual'" 1>&2
+    false
+  fi
+}
+
+@test "Script syntax error does not fail" {
+  expected_enter_string0=".enter.sh: line 1: syntax error near unexpected token \`syntax_failure'"
+  expected_enter_string1=".enter.sh: line 1: \`test ( syntax_failure )'"
+  expected_exit_string0=".exit.sh: line 1: syntax error near unexpected token \`syntax_failure'"
+  expected_exit_string1=".exit.sh: line 1: \`test ( syntax_failure )'"
+  echo "test ( syntax_failure )" > tmp/.enter.sh
+  echo "test ( syntax_failure )" > tmp/.exit.sh
+
+  run cd tmp
+  test $status # Enter status
+  compare_strings "$expected_enter_string0" "${lines[0]}"
+  compare_strings "$expected_enter_string1" "${lines[1]}"
+
+  run cd ..
+  test $status # Exit status
+  compare_strings "$expected_exit_string0" "${lines[0]}"
+  compare_strings "$expected_exit_string1" "${lines[1]}"
+}
