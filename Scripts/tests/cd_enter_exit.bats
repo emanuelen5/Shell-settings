@@ -52,21 +52,26 @@ function compare_strings() {
   fi
 }
 
-@test "Script syntax error does not fail" {
+@test ".enter.sh syntax error" {
   expected_enter_string0=".enter.sh: line 1: syntax error near unexpected token \`syntax_failure'"
   expected_enter_string1=".enter.sh: line 1: \`test ( syntax_failure )'"
-  expected_exit_string0=".exit.sh: line 1: syntax error near unexpected token \`syntax_failure'"
-  expected_exit_string1=".exit.sh: line 1: \`test ( syntax_failure )'"
   echo "test ( syntax_failure )" > tmp/.enter.sh
-  echo "test ( syntax_failure )" > tmp/.exit.sh
 
   run cd tmp
-  test $status # Enter status
+  echo "ouput: $output" 1>&2
+  test $status -eq 0
   compare_strings "$expected_enter_string0" "${lines[0]}"
   compare_strings "$expected_enter_string1" "${lines[1]}"
+}
+
+@test ".exit.sh syntax error" {
+  expected_exit_string0=".exit.sh: line 1: syntax error near unexpected token \`syntax_failure'"
+  expected_exit_string1=".exit.sh: line 1: \`test ( syntax_failure )'"
+  echo "test ( syntax_failure )" > tmp/.exit.sh
 
   run cd ..
-  test $status # Exit status
+  echo "ouput: $output" 1>&2
+  test $status -eq 0
   compare_strings "$expected_exit_string0" "${lines[0]}"
   compare_strings "$expected_exit_string1" "${lines[1]}"
 }
