@@ -11,13 +11,13 @@ teardown () {
   rm -rf tmp
 }
 
-@test "Run on enter" {
+@test ".enter.sh run on enter" {
   test -f tmp/.enter.sh
   cd tmp; cd ..
   test -f tmp/entered
 }
 
-@test "Run on exit" {
+@test ".exit.sh run on exit" {
   test -f tmp/.exit.sh
   cd tmp; cd ..
   test -f tmp/exited
