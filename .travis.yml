@@ -1,0 +1,6 @@
+install:
+  - git clone https://github.com/sstephenson/bats.git
+  - export PATH="bats/bin:$PATH"
+
+script:
+  - make test
