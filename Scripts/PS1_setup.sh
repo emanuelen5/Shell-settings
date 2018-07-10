@@ -219,9 +219,9 @@ dir_names () {
   local dir_index=0
   dirs -p | while read dir; do
     if [ $dir_index -eq 0 ]; then
-      echo "'$dir'"
+      echo "$(sed 's/ /\\ /' <<< "$dir")"
     else
-      echo "'$(sed 's/.*\///; s/ /\\ /' <<< "$dir")'"
+      echo "$(sed 's/.*\///; s/ /\\ /' <<< "$dir")"
     fi
     dir_index=$(($dir_index + 1))
   done
