@@ -215,4 +215,20 @@ ps1_git () {
   fi;
 }
 
-export PS1="${eIBlack}${CommandNumber} ${Time24h} ${eBlue}${PathShort}\$(ps1_git) \n${eGreen}\$ ${eColor_Off}"
+dir_names () {
+  local dir_index=0
+  dirs -p | while read dir; do
+    if [ $dir_index -eq 0 ]; then
+      echo "'$dir'"
+    else
+      echo "'$(sed 's/.*\///; s/ /\\ /' <<< "$dir")'"
+    fi
+    dir_index=$(($dir_index + 1))
+  done
+}
+
+dir_names_oneline() {
+  dir_names | tr '\n' ' '
+}
+
+export PS1="${eIBlack}${CommandNumber} ${Time24h} ${eBlue}\$(dir_names_oneline)\$(ps1_git) \n${eGreen}\$ ${eColor_Off}"
