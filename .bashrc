@@ -7,7 +7,6 @@ export VISUAL=$(which vim)
 export umask=002
 
 # Setting up a clean terminal
-#PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
 . ~/Scripts/PS1_setup.sh
 . ~/Scripts/cd_enter_exit.sh
 
@@ -22,5 +21,8 @@ start-ssh-agent -r > /dev/null
 # Nice commands
 alias where='echo -e "\b\r\e[K$YELLOW$USER$RED@$GREEN$HOSTNAME:$BLUE$PWD$NC "'
 alias clc='clear && clear'
+alias pd='pushd'
+alias upd='popd 2>/dev/null'
+
 alias grep='grep --color'
 alias ls='ls --color'
