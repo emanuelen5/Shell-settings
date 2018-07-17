@@ -52,8 +52,8 @@ stty ixany # Revert
 ```
 
 # Sources:
-**[1]** [How to geek: Keyboard shortcuts for bash command shell \[...\]][howtogeek]
-**[2]** [Digital ocean: How to use bash history commands and expansion \[...\]][digitalocean]
+**[1]** [How to geek: Keyboard shortcuts for bash command shell \[...\]][howtogeek] \
+**[2]** [Digital ocean: How to use bash history commands and expansion \[...\]][digitalocean] \
 **[3]** [Catonmat: Bash VI editing mode cheat sheet][catonmat]
 
 [howtogeek]: https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc
