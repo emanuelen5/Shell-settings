@@ -15,8 +15,9 @@ I've gathered some haxy stuff for the terminal since I tend to forget a lot of t
 | <kbd>Ctrl</kbd>+<kbd>s</kbd>  | Search forwards in history     |
 | <kbd>Ctrl</kbd>+<kbd>g</kbd>  | Cancel search                  |
 | <kbd>Ctrl</kbd>+<kbd>o</kbd>  | Run current command            |
+| <kbd>Alt</kbd>+<kbd>r</kbd>   | Revert any changes to a command you’ve pulled from your history if you’ve edited it. |
 
-### Navigating
+### Navigation
 | Command                      | Description                    |
 |:-----------------------------|--------------------------------|
 | <kbd>Ctrl</kbd>+<kbd>a</kbd> | Go to beginning of line        |
@@ -25,6 +26,7 @@ I've gathered some haxy stuff for the terminal since I tend to forget a lot of t
 | <kbd>Alt</kbd>+<kbd>b</kbd>  | Go backwards one word          |
 | <kbd>Ctrl</kbd>+<kbd>f</kbd> | Go forwards one character      |
 | <kbd>Alt</kbd>+<kbd>f</kbd>  | Go forwards one word           |
+| <kbd>Ctrl</kbd>+<kbd>x</kbd>, <kbd>Ctrl</kbd>+<kbd>x</kbd> | Move between the beginning of the line and the current position of the cursor |
 
 ### Capitalization
 | Command  | Description                    |
