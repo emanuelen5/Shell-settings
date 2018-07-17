@@ -195,6 +195,9 @@ ps1_git () {
     git_is_clean=`echo $status | grep "nothing to commit"`;
     git_is_updated=`echo $status | grep "up-to-date"`;
     git_is_ahead=`echo $status | grep "Your branch is ahead of"`;
+    git_is_behind=`echo $status | grep "Your branch is behind"`;
+    git_has_conflict=`echo $status | grep -P "Your branch .* conflict"`;
+    git_has_diverged=`echo $status | grep -P "Your branch .* have diverged"`;
     git_has_staged_changes=`echo $status | grep "Changes to be committed:"`;
     git_has_unstaged_changes=`echo $status | grep "Changes not staged for commit"`;
     git_has_untracked_files=`echo $status | grep "Untracked files:"`;
@@ -206,8 +209,11 @@ ps1_git () {
       echo -ne "${IYellow}";
     fi
     echo -ne "$branch_name";
-    if [ -n "$git_is_ahead" ] || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ] || [ -n "$git_has_untracked_files" ]; then echo -ne ", "; fi;
+    if [ -n "$git_is_ahead" ] || [ -n "$git_is_behind" ] || [ -n "$git_has_conflict" ] || [ -n "$git_has_diverged" ]  || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ] || [ -n "$git_has_untracked_files" ]; then echo -ne ", "; fi;
     if [ -n "$git_is_ahead" ]; then echo -ne "${ICyan}A"; fi;
+    if [ -n "$git_is_behind" ]; then echo -ne "${ICyan}B"; fi;
+    if [ -n "$git_has_conflict" ]; then echo -ne "${IRed}C"; fi;
+    if [ -n "$git_has_diverged" ]; then echo -ne "${IRed}D"; fi;
     if [ -n "$git_has_staged_changes" ]; then echo -ne "${IYellow}S"; fi;
     if [ -n "$git_has_unstaged_changes" ]; then echo -ne "${IRed}M"; fi;
     if [ -n "$git_has_untracked_files" ]; then echo -ne "${IYellow}?"; fi;
