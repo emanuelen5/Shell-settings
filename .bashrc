@@ -10,6 +10,9 @@ export umask=002
 . ~/Scripts/PS1_setup.sh
 . ~/Scripts/cd_enter_exit.sh
 
+# Removing ^s as suspend terminal
+stty -ixon
+
 # For stopping annoying loud bells
 set bell-style visible
 
