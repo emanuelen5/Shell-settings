@@ -219,7 +219,8 @@ dir_names () {
   local dir_index=0
   dirs -p | while read dir; do
     if [ $dir_index -eq 0 ]; then
-      echo "$(sed 's/ /\\ /' <<< "$dir")"
+      echo -n "$(sed 's/ /\\ /' <<< "$dir")"
+      echo -e "$IBlack"
     else
       echo "$(sed 's/.*\///; s/ /\\ /' <<< "$dir")"
     fi
@@ -231,4 +232,4 @@ dir_names_oneline() {
   dir_names | tr '\n' ' '
 }
 
-export PS1="${eIBlack}${CommandNumber} ${Time24h} ${eBlue}\$(dir_names_oneline)\$(ps1_git) \n${eGreen}\$ ${eColor_Off}"
+export PS1="${eIBlack}${HistoryNumber} ${Time24h} ${eBlue}\$(dir_names_oneline)\$(ps1_git) \n${eGreen}\$ ${eColor_Off}"
