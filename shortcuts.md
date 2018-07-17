@@ -43,6 +43,14 @@ I've gathered some haxy stuff for the terminal since I tend to forget a lot of t
 | <kbd>Ctrl</kbd>+<kbd>h</kbd>  | Delete the character before the cursor | 
 | <kbd>Alt</kbd>+<kbd>h</kbd>   | Delete the part of the word that ends at (is before) the cursor | 
 
+### Cut and paste
+| Command  | Description                    |
+|:---------|--------------------------------|
+| <kbd>Ctrl</kbd>+<kbd>w</kbd>  | Cut the word before the cursor, adding it to the clipboard.                    | 
+| <kbd>Ctrl</kbd>+<kbd>k</kbd>  | Cut the part of the line after the cursor, adding it to the clipboard.         | 
+| <kbd>Ctrl</kbd>+<kbd>u</kbd>  | Cut the part of the line before the cursor, adding it to the clipboard.        | 
+| <kbd>Ctrl</kbd>+<kbd>y</kbd>  | Paste the last thing you cut from the clipboard. The y here stands for “yank”. | 
+
 # Shortcuts for vi mode (`set -o vi`)
 See [\[3\]](#sources).
 
