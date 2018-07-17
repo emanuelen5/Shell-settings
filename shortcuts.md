@@ -1,10 +1,12 @@
+# Keyboard shortcuts and other tricks
 I've gathered some haxy stuff for the terminal since I tend to forget a lot of them.
-Sources:
+
+## Sources:
 * [How to geek: Keyboard shortcuts for bash command shell \[...\]](https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc)
 * [Digital ocean: How to use bash history commands and expansion \[...\]](https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps)
 * [Catonmat: Bash VI editing mode cheat sheet](http://www.catonmat.net/download/bash-vi-editing-mode-cheat-sheet.pdf)
 
-# For emacs mode (`set -o emacs`)
+# Shortcuts for emacs mode (`set -o emacs`)
 
 ## Shortcuts
 
@@ -44,10 +46,10 @@ Sources:
 | <kbd>Ctrl</kbd>+<kbd>h</kbd>  | Delete the character before the cursor | 
 | <kbd>Alt</kbd>+<kbd>h</kbd>   | Delete the part of the word that ends at (is before) the cursor | 
 
-# For vi mode (`set -o vi`)
+# Shortcuts for vi mode (`set -o vi`)
 See the link on the top: "Catonmat: Bash VI editing mode cheat sheet"
 
-# General
+# General shell settings
 ## <kbd>Ctrl</kbd>+<kbd>s</kbd> behavior
 ```bash
 stty -ixon # Make the terminal not stop when pressing Ctrl-s
