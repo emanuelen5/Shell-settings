@@ -13,6 +13,10 @@ export umask=002
 # Removing ^s as suspend terminal
 stty -ixon
 
+# Improving history
+export HISTSIZE=10000
+export HISTTIMEFORMAT="(%Y-%m-%d %T) "
+
 # For stopping annoying loud bells
 set bell-style visible
 
