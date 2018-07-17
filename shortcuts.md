@@ -12,7 +12,7 @@ I've gathered some haxy stuff for the terminal since I tend to forget a lot of t
 | <kbd>Alt</kbd>+<kbd><</kbd>   | Go to start of history         |
 | <kbd>Alt</kbd>+<kbd>></kbd>   | Go to end of history (current) |
 | <kbd>Ctrl</kbd>+<kbd>r</kbd>  | Search backwards in history    |
-| <kbd>Ctrl</kbd>+<kbd>s</kbd>  | Search forwards in history     |
+| <kbd>Ctrl</kbd>+<kbd>s</kbd>  | Search forwards in history (must use together with `stty -ixon`, see the [general shell settings](#general-shell-settings)) |
 | <kbd>Ctrl</kbd>+<kbd>g</kbd>  | Cancel search                  |
 | <kbd>Ctrl</kbd>+<kbd>o</kbd>  | Run current command            |
 | <kbd>Alt</kbd>+<kbd>r</kbd>   | Revert any changes to a command you’ve pulled from your history if you’ve edited it. |
