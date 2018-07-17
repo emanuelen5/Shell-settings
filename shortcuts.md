@@ -6,13 +6,6 @@ Sources:
 
 # For emacs mode (`set -o emacs`)
 
-## <kbd>Ctrl</kbd>+<kbd>s</kbd> behavior
-
-```bash
-stty -ixon # Make the terminal not stop when pressing Ctrl-s
-stty ixany # Revert
-```
-
 ## Shortcuts
 
 ### History
@@ -43,4 +36,20 @@ stty ixany # Revert
 | <kbd>Alt</kbd>+<kbd>l</kbd>  | Uncapitalize every character from the cursor to the end of the current word, converting the characters to lower case.| 
 | <kbd>Alt</kbd>+<kbd>c</kbd>  | Capitalize the character under the cursor. Your cursor will move to the end of the current word.| 
 
+### Editing
+| Command  | Description                    |
+|:---------|--------------------------------|
+| <kbd>Ctrl</kbd>+<kbd>d</kbd>  | Delete the character under the cursor | 
+| <kbd>Alt</kbd>+<kbd>d</kbd>   | Delete the part of the word that starts at (and is after) the cursor | 
+| <kbd>Ctrl</kbd>+<kbd>h</kbd>  | Delete the character before the cursor | 
+| <kbd>Alt</kbd>+<kbd>h</kbd>   | Delete the part of the word that ends at (is before) the cursor | 
+
 # For vi mode (`set -o vi`)
+See the link on the top: "Catonmat: Bash VI editing mode cheat sheet"
+
+# General
+## <kbd>Ctrl</kbd>+<kbd>s</kbd> behavior
+```bash
+stty -ixon # Make the terminal not stop when pressing Ctrl-s
+stty ixany # Revert
+```
