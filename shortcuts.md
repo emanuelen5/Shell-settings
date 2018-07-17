@@ -1,7 +1,7 @@
 I've gathered some haxy stuff for the terminal since I tend to forget a lot of them.
 Sources:
-* [How to geek: Keyboard shortcuts for bash command shell (...)](https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc)
-* [Digital ocean: How to use bash history commands and expansion (...)](https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps)
+* [How to geek: Keyboard shortcuts for bash command shell \[...\]](https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc)
+* [Digital ocean: How to use bash history commands and expansion \[...\]](https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps)
 * [Catonmat: Bash VI editing mode cheat sheet](http://www.catonmat.net/download/bash-vi-editing-mode-cheat-sheet.pdf)
 
 # For emacs mode (`set -o emacs`)
