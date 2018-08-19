@@ -19,3 +19,4 @@ link_install_file () {
 link_install_file .gitconfig
 link_install_file .bashrc
 link_install_file Scripts
+link_install_file .minttyrc
