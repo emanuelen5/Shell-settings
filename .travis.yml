@@ -4,3 +4,7 @@ install:
 
 script:
   - make test
+
+branches:
+  except:
+  - /^Windows-.*$/

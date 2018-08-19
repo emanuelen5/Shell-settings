@@ -26,3 +26,5 @@
 [log]
 	follow = true
 	decorate = short
+[core]
+	editor = D:/Program\\ Files/Git/usr/bin/vim
