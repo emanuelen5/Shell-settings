@@ -1,5 +1,15 @@
-BoldAsFont=-1
+BoldAsFont=yes
 RightClickAction=extend
 FontSmoothing=full
 Font=Lucida Sans Typewriter
+BoldAsColour=yes
+AllowBlinking=yes
+CursorType=block
+OpaqueWhenFocused=yes
+Locale=C
+Charset=UTF-8
+ScrollbackLines=20000
+Term=xterm-256color
+BellFlash=yes
+FontHeight=9
 
