@@ -5,6 +5,7 @@
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export umask=002
+export PATH="$PATH:~/bin"
 
 # Setting up a clean terminal
 . ~/Scripts/PS1_setup.sh
