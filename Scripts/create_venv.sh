@@ -13,4 +13,7 @@ fi
 venv_name="$1"
 
 cp ~/Shell-settings/Scripts/enter_exit_template/.{enter,exit}.sh .
-virtualenv --prompt="($1) " venv
+PYTHON_EXECUTABLE=`which python`
+PROMPT="($1) "
+
+virtualenv --python="${PYTHON_EXECUTABLE}" --prompt="${PROMPT}" venv
