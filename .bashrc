@@ -34,3 +34,12 @@ alias upd='popd 2>/dev/null'
 
 alias grep='grep --color'
 alias ls='ls --color'
+
+# More custom commands
+function mkcd () {
+  if [ $# -lt 1 ]; then
+    return
+  fi
+  mkdir $@
+  cd "${@: -1}"
+}
