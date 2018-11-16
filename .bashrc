@@ -43,3 +43,4 @@ function mkcd () {
   mkdir $@
   cd "${@: -1}"
 }
+alias mkvenv='create_venv.sh'
