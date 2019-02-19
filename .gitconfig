@@ -7,6 +7,7 @@
 [alias]
         log2 = log --graph --decorate
 	graph = log --graph --decorate --oneline --full-history --all
+	graph-this = log --graph --decorate --oneline --full-history
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	nocommit = log server..master
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
