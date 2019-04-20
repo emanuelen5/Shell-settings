@@ -35,6 +35,17 @@ function compare_strings() {
   fi
 }
 
+function contains_string() {
+  haystack=`strip_colors "$1"`
+  needle="$2"
+  if [ ! `echo "$haystack" | grep "$needle"` ]; then
+    echo "Could not find needle in haystack" 1>&2
+    echo "  haystack: '$haystack'" 1>&2
+    echo "  needle:   '$needle'" 1>&2
+    false
+  fi
+}
+
 @test "Not git repo: Nothing appended to PS1" {
   cd /
   run ps1_git
@@ -61,7 +72,7 @@ function compare_strings() {
   cd $GIT_DIR1
   echo "v2" > testfile
   run ps1_git
-  echo "$output" | grep M
+  contains_string "$output" M
 }
 
 @test "Staged changes" {
@@ -69,14 +80,14 @@ function compare_strings() {
   echo "v2" > testfile
   git add -u
   run ps1_git
-  echo "$output" | grep S
+  contains_string "$output" S
 }
 
 @test "Untracked file" {
   cd $GIT_DIR1
   touch untracked_file
   run ps1_git
-  echo "$output" | grep ?
+  contains_string "$output" ?
 }
 
 @test "Ahead of remote" {
@@ -85,7 +96,7 @@ function compare_strings() {
   git add -A
   git commit -m "Second commit"
   run ps1_git
-  echo "$output" | grep A
+  contains_string "$output" A
 }
 
 @test "Behind remote" {
@@ -97,20 +108,20 @@ function compare_strings() {
   cd $GIT_DIR1
   git fetch
   run ps1_git
-  echo "$output" | grep B
+  contains_string "$output" B
 }
 
 @test "Conflict" {
   false "Not implemented yet"
-  echo "$output" | grep C
+  contains_string "$output" C
 }
 
 @test "Diverged" {
   false "Not implemented yet"
-  echo "$output" | grep D
+  contains_string "$output" D
 }
 
 @test "Rebasing" {
   false "Not implemented yet"
-  echo "$output" | grep R
+  contains_string "$output" R
 }
