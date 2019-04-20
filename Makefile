@@ -6,5 +6,6 @@ setup-link:
 
 test:
 	bats ${MAKEFILE_DIR}/Scripts/tests/cd_enter_exit.bats
+	bats ${MAKEFILE_DIR}/Scripts/tests/ps1_git_status.bats
 
 .PHONY: setup-link test
