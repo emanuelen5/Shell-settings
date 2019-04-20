@@ -112,7 +112,15 @@ function contains_string() {
 }
 
 @test "Conflict" {
-  false "Not implemented yet"
+  pushd $GIT_REMOTE
+    echo "v2" > testfile
+    git commit -am "Second commit remote"
+  popd
+  cd $GIT_DIR
+  echo "v3" > testfile
+  git commit -am "Second commit local"
+  git pull || true
+  run ps1_git
   contains_string "$output" C
 }
 
