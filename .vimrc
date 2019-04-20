@@ -1,8 +1,13 @@
-set number
-set mouse=a
 set visualbell
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 au Filetype makefile source ~/.vim/makefile.vim
+
+set mouse=a " Mouse input
+set number " Line numbers
+
+" Use indent for folding, but do not fold at start
+set foldmethod=indent
+au BufRead * normal zR
 
 au BufRead,BufNewFile *.ts setfiletype typescript
 
