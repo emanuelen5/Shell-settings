@@ -117,7 +117,15 @@ function contains_string() {
 }
 
 @test "Diverged" {
-  false "Not implemented yet"
+  pushd $GIT_REMOTE
+    echo "v2" > testfile
+    git commit -am "Second commit remote"
+  popd
+  cd $GIT_DIR1
+  echo "v3" > testfile
+  git commit -am "Second commit local"
+  git fetch
+  run ps1_git
   contains_string "$output" D
 }
 
