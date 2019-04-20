@@ -1,5 +1,5 @@
 . Scripts/PS1_setup.sh
-GIT_DIR1="local1"
+GIT_DIR="local1"
 GIT_REMOTE="remote"
 
 setup () {
@@ -11,12 +11,12 @@ setup () {
     git add testfile
     git commit -m "Initial commit"
   popd
-  git clone $GIT_REMOTE $GIT_DIR1
+  git clone $GIT_REMOTE $GIT_DIR
 }
 
 teardown () {
   cd "$BATS_TEST_DIRNAME"
-  rm -rf $GIT_DIR1
+  rm -rf $GIT_DIR
   rm -rf $GIT_REMOTE
 }
 
@@ -53,14 +53,14 @@ function contains_string() {
 }
 
 @test "Branch name displayed" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   git checkout -b "branchname"
   run ps1_git
   compare_strings " (branchname)" "$output"
 }
 
 @test "Detached mode" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   echo "v1" > testfile
   git commit -am "Second commit"
   git checkout HEAD^
@@ -69,14 +69,14 @@ function contains_string() {
 }
 
 @test "Unstaged changes" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   echo "v2" > testfile
   run ps1_git
   contains_string "$output" M
 }
 
 @test "Staged changes" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   echo "v2" > testfile
   git add -u
   run ps1_git
@@ -84,14 +84,14 @@ function contains_string() {
 }
 
 @test "Untracked file" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   touch untracked_file
   run ps1_git
   contains_string "$output" ?
 }
 
 @test "Ahead of remote" {
-  cd $GIT_DIR1
+  cd $GIT_DIR
   touch untracked_file
   git add -A
   git commit -m "Second commit"
@@ -105,7 +105,7 @@ function contains_string() {
     git add -A
     git commit -m "Second commit"
   popd
-  cd $GIT_DIR1
+  cd $GIT_DIR
   git fetch
   run ps1_git
   contains_string "$output" B
@@ -121,7 +121,7 @@ function contains_string() {
     echo "v2" > testfile
     git commit -am "Second commit remote"
   popd
-  cd $GIT_DIR1
+  cd $GIT_DIR
   echo "v3" > testfile
   git commit -am "Second commit local"
   git fetch
