@@ -16,8 +16,8 @@ setup () {
 
 teardown () {
   cd "$BATS_TEST_DIRNAME"
-  rm -rf $GIT_DIR
-  rm -rf $GIT_REMOTE
+    rm -rf $GIT_DIR
+    rm -rf $GIT_REMOTE
 }
 
 function strip_colors() {
@@ -48,55 +48,55 @@ function contains_string() {
 
 @test "Not git repo: Nothing appended to PS1" {
   cd /
-  run ps1_git
-  compare_strings "" "$output"
+    run ps1_git
+    compare_strings "" "$output"
 }
 
 @test "Branch name displayed" {
   cd $GIT_DIR
-  git checkout -b "branchname"
-  run ps1_git
-  compare_strings " (branchname)" "$output"
+    git checkout -b "branchname"
+    run ps1_git
+    compare_strings " (branchname)" "$output"
 }
 
 @test "Detached mode" {
   cd $GIT_DIR
-  echo "v1" > testfile
-  git commit -am "Second commit"
-  git checkout HEAD^
-  run ps1_git
-  compare_strings " (`git rev-parse --short HEAD`)" "$output"
+    echo "v1" > testfile
+    git commit -am "Second commit"
+    git checkout HEAD^
+    run ps1_git
+    compare_strings " (`git rev-parse --short HEAD`)" "$output"
 }
 
 @test "Unstaged changes" {
   cd $GIT_DIR
-  echo "v2" > testfile
-  run ps1_git
-  contains_string "$output" M
+    echo "v2" > testfile
+    run ps1_git
+    contains_string "$output" M
 }
 
 @test "Staged changes" {
   cd $GIT_DIR
-  echo "v2" > testfile
-  git add -u
-  run ps1_git
-  contains_string "$output" S
+    echo "v2" > testfile
+    git add -u
+    run ps1_git
+    contains_string "$output" S
 }
 
 @test "Untracked file" {
   cd $GIT_DIR
-  touch untracked_file
-  run ps1_git
-  contains_string "$output" ?
+    touch untracked_file
+    run ps1_git
+    contains_string "$output" ?
 }
 
 @test "Ahead of remote" {
   cd $GIT_DIR
-  touch untracked_file
-  git add -A
-  git commit -m "Second commit"
-  run ps1_git
-  contains_string "$output" A
+    touch untracked_file
+    git add -A
+    git commit -m "Second commit"
+    run ps1_git
+    contains_string "$output" A
 }
 
 @test "Behind remote" {
@@ -106,9 +106,9 @@ function contains_string() {
     git commit -m "Second commit"
   popd
   cd $GIT_DIR
-  git fetch
-  run ps1_git
-  contains_string "$output" B
+    git fetch
+    run ps1_git
+    contains_string "$output" B
 }
 
 @test "Conflict" {
@@ -117,11 +117,11 @@ function contains_string() {
     git commit -am "Second commit remote"
   popd
   cd $GIT_DIR
-  echo "v3" > testfile
-  git commit -am "Second commit local"
-  git pull || true
-  run ps1_git
-  contains_string "$output" C
+    echo "v3" > testfile
+    git commit -am "Second commit local"
+    git pull || true
+    run ps1_git
+    contains_string "$output" C
 }
 
 @test "Diverged" {
@@ -130,11 +130,11 @@ function contains_string() {
     git commit -am "Second commit remote"
   popd
   cd $GIT_DIR
-  echo "v3" > testfile
-  git commit -am "Second commit local"
-  git fetch
-  run ps1_git
-  contains_string "$output" D
+    echo "v3" > testfile
+    git commit -am "Second commit local"
+    git fetch
+    run ps1_git
+    contains_string "$output" D
 }
 
 @test "Rebasing" {
