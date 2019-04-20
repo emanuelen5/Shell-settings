@@ -165,7 +165,7 @@ ps1_git () {
       echo -ne "${IYellow}";
     fi
     echo -ne "$branch_name";
-    if [ -z "$git_is_clean" ]; then
+    if [ -n "$git_is_ahead" ] || [ -n "$git_is_behind" ] || [ -n "$git_has_conflict" ] || [ -n "$git_has_diverged" ] || [ -n "$git_rebasing" ] || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ] || [ -n "$git_has_untracked_files" ]; then
       echo -ne ", ";
       if [ -n "$git_is_ahead" ]; then echo -ne "${ICyan}A"; fi;
       if [ -n "$git_is_behind" ]; then echo -ne "${ICyan}B"; fi;
