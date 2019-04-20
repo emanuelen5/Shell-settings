@@ -61,7 +61,7 @@ function compare_strings() {
   cd $GIT_DIR1
   echo "v2" > testfile
   run ps1_git
-  compare_strings " (master, M)" "$output"
+  echo "$output" | grep M
 }
 
 @test "Staged changes" {
@@ -69,14 +69,14 @@ function compare_strings() {
   echo "v2" > testfile
   git add -u
   run ps1_git
-  compare_strings " (master, S)" "$output"
+  echo "$output" | grep S
 }
 
 @test "Untracked file" {
   cd $GIT_DIR1
   touch untracked_file
   run ps1_git
-  compare_strings " (master, ?)" "$output"
+  echo "$output" | grep ?
 }
 
 @test "Ahead of remote" {
@@ -85,7 +85,7 @@ function compare_strings() {
   git add -A
   git commit -m "Second commit"
   run ps1_git
-  compare_strings " (master, A)" "$output"
+  echo "$output" | grep A
 }
 
 @test "Behind remote" {
@@ -97,5 +97,20 @@ function compare_strings() {
   cd $GIT_DIR1
   git fetch
   run ps1_git
-  compare_strings " (master, B)" "$output"
+  echo "$output" | grep B
+}
+
+@test "Conflict" {
+  false "Not implemented yet"
+  echo "$output" | grep C
+}
+
+@test "Diverged" {
+  false "Not implemented yet"
+  echo "$output" | grep D
+}
+
+@test "Rebasing" {
+  false "Not implemented yet"
+  echo "$output" | grep R
 }
