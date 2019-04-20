@@ -138,6 +138,17 @@ function contains_string() {
 }
 
 @test "Rebasing" {
-  false "Not implemented yet"
-  contains_string "$output" R
+  pushd $GIT_REMOTE
+    echo 2 > 2
+    git add 2
+    git commit -m "Second file remote"
+  popd
+  cd $GIT_DIR
+    echo 3 > 2
+    git add 2
+    git commit -m "Second file local"
+    git fetch
+    git rebase origin/master || true
+    run ps1_git
+    contains_string "$output" R
 }
