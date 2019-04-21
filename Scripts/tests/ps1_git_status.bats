@@ -38,7 +38,7 @@ function compare_strings() {
 function contains_string() {
   haystack=`strip_colors "$1"`
   needle="$2"
-  if [ ! `echo "$haystack" | grep "$needle"` ]; then
+  if ! `echo "$haystack" | grep -q "$needle"`; then
     echo "Could not find needle in haystack" 1>&2
     echo "  haystack: '$haystack'" 1>&2
     echo "  needle:   '$needle'" 1>&2
