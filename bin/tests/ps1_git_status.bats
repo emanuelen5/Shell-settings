@@ -1,4 +1,4 @@
-. Scripts/PS1_setup.sh
+. bin/PS1_setup.sh
 GIT_DIR="local1"
 GIT_REMOTE="remote"
 

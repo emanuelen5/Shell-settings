@@ -16,6 +16,6 @@ link_install_file () {
   fi
 }
 
-for file in .gitconfig .bashrc .vimrc Scripts; do
+for file in .gitconfig .bashrc .vimrc bin; do
 	link_install_file "$file"
 done

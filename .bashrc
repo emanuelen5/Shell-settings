@@ -1,5 +1,5 @@
 [ -f /etc/skel/.bashrc ] && source /etc/skel/.bashrc
-. ~/Scripts/bash_colors.sh
+. ~/bin/bash_colors.sh
 
 # Defaults
 export EDITOR=$(which vim)
@@ -8,8 +8,8 @@ export umask=002
 export PATH="$PATH:~/bin"
 
 # Setting up a clean terminal
-. ~/Scripts/PS1_setup.sh
-. ~/Scripts/cd_enter_exit.sh
+. ~/bin/PS1_setup.sh
+. ~/bin/cd_enter_exit.sh
 
 # Removing ^s as suspend terminal
 stty -ixon
@@ -22,7 +22,7 @@ export HISTTIMEFORMAT="(%Y-%m-%d %T) "
 set bell-style visible
 
 # Linking scripts
-alias start-ssh-agent=". ~/Scripts/ssh_agent_load.sh"
+alias start-ssh-agent=". ~/bin/ssh_agent_load.sh"
 alias ssh-add-keys='ssh-add $(cat ~/.ssh-keys.list 2>/dev/null) || ssh-add'
 start-ssh-agent -r > /dev/null
 

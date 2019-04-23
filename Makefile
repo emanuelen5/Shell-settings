@@ -5,7 +5,7 @@ setup-link:
 	@./link_install_files.sh $(shell pwd)
 
 test:
-	bats ${MAKEFILE_DIR}/Scripts/tests/cd_enter_exit.bats
-	bats ${MAKEFILE_DIR}/Scripts/tests/ps1_git_status.bats
+	bats ${MAKEFILE_DIR}/bin/tests/cd_enter_exit.bats
+	bats ${MAKEFILE_DIR}/bin/tests/ps1_git_status.bats
 
 .PHONY: setup-link test
