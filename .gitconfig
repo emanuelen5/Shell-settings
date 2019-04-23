@@ -4,6 +4,8 @@
 	email = erasmus.cedernaes@gmail.com
 [color]
 	ui = auto
+[core]
+       autocrlf = input
 [alias]
         log2 = log --graph --decorate
 	graph = log --graph --decorate --oneline --full-history --all
