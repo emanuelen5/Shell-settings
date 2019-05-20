@@ -13,7 +13,7 @@ fi
 venv_name="$1"
 
 # Activate venv upon entering the directory
-enter_exit_template_folder="~/Shell-settings/bin/enter_exit_template"
+enter_exit_template_folder="$HOME/Shell-settings/bin/enter_exit_template"
 if [ -d $enter_exit_template_folder ]; then
   cp $enter_exit_template_folder/.{enter,exit}.sh .
 else
