@@ -1,2 +1,3 @@
 vbell on
 escape ^Qq
+defscrollback 20000
