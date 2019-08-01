@@ -1,5 +1,6 @@
 set visualbell
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+syntax on
 au Filetype makefile source ~/.vim/makefile.vim
 
 set mouse=a " Mouse input
