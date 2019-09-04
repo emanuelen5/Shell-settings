@@ -35,6 +35,8 @@ alias upd='popd 2>/dev/null'
 alias grep='grep --color'
 alias ls='ls --color'
 
+alias venv='source venv/bin/activate'
+
 # More custom commands
 function mkcd () {
   if [ $# -lt 1 ]; then
