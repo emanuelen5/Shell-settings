@@ -1,10 +1,16 @@
-set visualbell
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 syntax on
 au Filetype makefile source ~/.vim/makefile.vim
 
 set mouse=a " Mouse input
 set number " Line numbers
+
+" Disable bell and window flashing (to remove hang when scrolling outside of
+" window)
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+" Disable beeping and window flashing
 
 " Use indent for folding, but do not fold at start
 set foldmethod=indent
