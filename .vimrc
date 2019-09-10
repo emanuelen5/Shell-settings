@@ -1,5 +1,6 @@
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 syntax on
+set tabstop=4 softtabstop=4 noexpandtab shiftwidth=4 autoindent smartindent smarttab
+
 au Filetype makefile source ~/.vim/makefile.vim
 
 set mouse=a " Mouse input

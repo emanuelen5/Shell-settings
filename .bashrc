@@ -46,3 +46,4 @@ function mkcd () {
   cd "${@: -1}"
 }
 alias mkvenv='create_venv.sh'
+
