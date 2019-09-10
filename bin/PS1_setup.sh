@@ -141,11 +141,11 @@ CommandNumber="\#" # The command number of this command
 ps1_git () {
   status=$(git status 2>/dev/null);
   if [ $? -eq 0 ]; then
-    branch_name=$(git rev-parse --abbrev-ref HEAD);
+    branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null);
 
     # If not on a branch
     if [ "$branch_name" = "HEAD" ]; then
-      branch_name=$(git rev-parse --short HEAD);
+      branch_name=$(git rev-parse --short HEAD 2>/dev/null);
     fi;
     echo -ne "${Color_Off} (";
     git_is_clean=$(echo $status | grep "nothing to commit");
