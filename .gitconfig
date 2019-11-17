@@ -6,6 +6,7 @@
 	ui = auto
 [core]
        autocrlf = input
+	excludesfile = /home/emaus/.gitexclude
 [alias]
         log2 = log --graph --decorate
 	graph = log --graph --decorate --oneline --full-history --all
