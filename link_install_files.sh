@@ -16,6 +16,6 @@ link_install_file () {
   fi
 }
 
-for file in .gitconfig .gitexcludes .bashrc .vimrc bin .screenrc; do
+for file in .gitconfig .gitexclude .bashrc .vimrc bin .screenrc; do
 	link_install_file "$file"
 done
