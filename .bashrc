@@ -34,6 +34,7 @@ alias upd='popd 2>/dev/null'
 
 alias grep='grep --color'
 alias ls='ls --color'
+alias trim-trailing-spaces="sed -i 's/[[:space:]]*\$//'"
 
 alias venv='source venv/bin/activate'
 
