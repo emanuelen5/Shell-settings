@@ -19,6 +19,7 @@
 	diffs = diff --stat
 	graph2 = log --graph --pretty=format:'%C(yellow)%h %Cred%<(50,trunc)%s%C(cyan)%<(30,trunc)%d%n        %Creset%ad, %<(15)%ar %Cgreen%an' --date=short
 	checkback = ! git_checkback.sh
+	cup = commit --amend --no-edit
 [diff]
 	tool = vimdiff
 [push]
