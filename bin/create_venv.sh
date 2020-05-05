@@ -22,13 +22,14 @@ fi
 
 PYTHON_EXECUTABLE=`which python`
 PROMPT="($1) "
+shift
 
 echo "Setting python prompt to \"${PROMPT}\""
 echo "Using executable on path \"${PYTHON_EXECUTABLE}\""
 echo "Creating virtual environment in ${PWD}/venv"
 echo -n "Installing..."
 
-virtualenv --python="${PYTHON_EXECUTABLE}" --prompt="${PROMPT}" venv >/dev/null
+virtualenv --python="${PYTHON_EXECUTABLE}" --prompt="${PROMPT}" $@ venv >/dev/null
 echo " Done!"
 echo ""
 echo "Don't forget to activate the virtual environment (i.e. \`source .enter.sh\`, using the enter/exit scripts)!"
