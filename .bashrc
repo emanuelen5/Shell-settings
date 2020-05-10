@@ -48,3 +48,7 @@ function mkcd () {
 }
 alias mkvenv='create_venv.sh'
 
+# Local configuration for the machine
+if [ -f ~/.bashrc.local ]; then
+	. ~/.bashrc.local
+fi
