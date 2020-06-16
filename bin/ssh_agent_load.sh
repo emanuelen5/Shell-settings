@@ -4,7 +4,7 @@
 
 # Attempt to find old agents
 find_ssh_agents () {
-  ps x | grep "ssh-agent" |
+  ps x | grep -P "\d ssh-agent" |
     sed "$ d" | # Remove last line (current command will match as well)
     sed -rn 's/ *([0-9]+).*/\1/p' | # Get PIDs
   while read pid; do
