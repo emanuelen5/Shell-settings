@@ -1,16 +1,19 @@
 [ -f /etc/skel/.bashrc ] && source /etc/skel/.bashrc
-. ~/Scripts/bash_colors.sh
+. ~/bin/bash_colors.sh
 
 # Defaults
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export DISPLAY=localhost:0.0
 alias python='winpty python.exe'
+export umask=002
+export PATH="$PATH:~/bin"
 
 # Setting up a clean terminal
 #PS1='\['$LIGHT_GREEN'\]'\$'\['$NC'\] '
-. ~/Scripts/PS1_setup.sh
-. ~/Scripts/cd_enter_exit.sh
+
+. ~/bin/PS1_setup.sh
+. ~/bin/cd_enter_exit.sh
 
 # Removing ^s as suspend terminal
 stty -ixon
@@ -23,7 +26,7 @@ export HISTTIMEFORMAT="(%Y-%m-%d %T) "
 set bell-style visible
 
 # Linking scripts
-alias start-ssh-agent=". ~/Scripts/ssh_agent_load.sh"
+alias start-ssh-agent=". ~/bin/ssh_agent_load.sh"
 alias ssh-add-keys='ssh-add $(cat ~/.ssh-keys.list 2>/dev/null) || ssh-add'
 start-ssh-agent -r > /dev/null
 
@@ -35,3 +38,21 @@ alias upd='popd 2>/dev/null'
 
 alias grep='grep --color'
 alias ls='ls --color'
+alias trim-trailing-spaces="sed -i 's/[[:space:]]*\$//'"
+
+alias venv='source venv/bin/activate'
+
+# More custom commands
+function mkcd () {
+  if [ $# -lt 1 ]; then
+    return
+  fi
+  mkdir $@
+  cd "${@: -1}"
+}
+alias mkvenv='create_venv.sh'
+
+# Local configuration for the machine
+if [ -f ~/.bashrc.local ]; then
+	. ~/.bashrc.local
+fi

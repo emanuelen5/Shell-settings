@@ -1,4 +1,4 @@
-. Scripts/cd_enter_exit.sh
+. bin/cd_enter_exit.sh
 
 setup () {
   cd "$BATS_TEST_DIRNAME"

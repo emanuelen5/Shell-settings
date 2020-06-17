@@ -139,25 +139,24 @@ CommandNumber="\#" # The command number of this command
 
 # This is evaluated when the start for the shell row is printed
 ps1_git () {
-  status=`git status 2>/dev/null`;
+  status=$(git status 2>/dev/null);
   if [ $? -eq 0 ]; then
-    branch_name=`echo $status | grep -Po "(?<=On branch )\\S+"`;
+    branch_name=$(git rev-parse --abbrev-ref HEAD 2>/dev/null);
 
     # If not on a branch
-    if [ -z "$branch_name" ]; then
-      branch_name=`echo $status | grep -Po "(?<=HEAD detached at )\\S+"`;
+    if [ "$branch_name" = "HEAD" ]; then
+      branch_name=$(git rev-parse --short HEAD 2>/dev/null);
     fi;
     echo -ne "${Color_Off} (";
-    git_is_clean=`echo $status | grep "nothing to commit"`;
-    git_is_ahead=`echo $status | grep "Your branch is ahead of"`;
-    git_is_ahead=`echo $status | grep "Your branch is ahead of"`;
-    git_is_behind=`echo $status | grep "Your branch is behind"`;
-    git_has_conflict=`echo $status | grep -P "Your branch .* conflict"`;
-    git_has_diverged=`echo $status | grep -P "Your branch .* have diverged"`;
-    git_rebasing=`echo $status | grep "rebase in progress"`;
-    git_has_staged_changes=`echo $status | grep "Changes to be committed:"`;
-    git_has_unstaged_changes=`echo $status | grep "Changes not staged for commit"`;
-    git_has_untracked_files=`echo $status | grep "Untracked files:"`;
+    git_is_clean=$(echo $status | grep "nothing to commit");
+    git_is_ahead=$(echo $status | grep "Your branch is ahead of");
+    git_is_behind=$(echo $status | grep "Your branch is behind");
+    git_has_conflict=$(echo $status | grep -P "Your branch .* conflict");
+    git_has_diverged=$(echo $status | grep -P "Your branch .* have diverged");
+    git_rebasing=$(echo $status | grep "rebase in progress");
+    git_has_staged_changes=$(echo $status | grep "Changes to be committed:");
+    git_has_unstaged_changes=$(echo $status | grep "Changes not staged for commit");
+    git_has_untracked_files=$(echo $status | grep "Untracked files:");
     if [ -n "$git_is_clean" ]; then
       echo -ne "${IGreen}";
     elif [ -n "$git_has_unstaged_changes" ]; then
@@ -166,7 +165,7 @@ ps1_git () {
       echo -ne "${IYellow}";
     fi
     echo -ne "$branch_name";
-    if [ -z "$git_is_clean" ]; then
+    if [ -n "$git_is_ahead" ] || [ -n "$git_is_behind" ] || [ -n "$git_has_conflict" ] || [ -n "$git_has_diverged" ] || [ -n "$git_rebasing" ] || [ -n "$git_has_staged_changes" ] || [ -n "$git_has_unstaged_changes" ] || [ -n "$git_has_untracked_files" ]; then
       echo -ne ", ";
       if [ -n "$git_is_ahead" ]; then echo -ne "${ICyan}A"; fi;
       if [ -n "$git_is_behind" ]; then echo -ne "${ICyan}B"; fi;
