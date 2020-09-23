@@ -8,16 +8,9 @@ init-links: ${links}
 	@echo "Setting up symbolic links for files in ${HOME}"
 	@./link_install_files.sh $(shell pwd) $^
 
-vundle_dir=~/.vim/bundle/Vundle.vim
 init-vundle:
-	@if ! [ -d ${vundle_dir} ]; then \
-		echo Cloning Vundle; \
-		git clone https://github.com/VundleVim/Vundle.vim.git ${vundle_dir}; \
-	else \
-		echo Updating Vundle; \
-		cd ${vundle_dir}; \
-		git pull; \
-	fi
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 test:
 	bats ${MAKEFILE_DIR}/bin/tests/cd_enter_exit.bats

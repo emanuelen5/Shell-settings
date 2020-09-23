@@ -3,7 +3,7 @@ syntax on
 set nocompatible " use extended function of vim (not compatible with vi)
 set backup " take backup. if not, specify [ set nobackup ]
 set backupdir=~/.backup  " specify backup directory
-set hlsearch " Highlight all matches in search
+" set hlsearch " Highlight all matches in search
 set incsearch " use incremental search
 
 set tabstop=4 softtabstop=4 noexpandtab shiftwidth=4 autoindent smartindent smarttab " Use tabs as indentation
@@ -25,52 +25,19 @@ au BufReadPost * normal zR
 au BufRead,BufNewFile *.ts setfiletype typescript
 au Filetype makefile source ~/.vim/makefile.vim
 
+" Lightline
+set laststatus=2
 
-
-"""""""""""""""""
-"" VUNDLE
-"""""""""""""""""
-	set nocompatible              " be iMproved, required
-	filetype off                  " required
-
-	" set the runtime path to include Vundle and initialize
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
-	" alternatively, pass a path where Vundle should install plugins
-	"call vundle#begin('~/some/path/here')
-
-	" let Vundle manage Vundle, required
-	Plugin 'VundleVim/Vundle.vim'
-
-	" The following are examples of different formats supported.
-	" Keep Plugin commands between vundle#begin/end.
-	" plugin on GitHub repo
-	Plugin 'tpope/vim-fugitive'
-	" plugin from http://vim-scripts.org/vim/scripts.html
-	" Plugin 'L9'
-	" Git plugin not hosted on GitHub
-	Plugin 'git://git.wincent.com/command-t.git'
-	" git repos on your local machine (i.e. when working on your own plugin)
-	Plugin 'file:///home/gmarik/path/to/plugin'
-	" The sparkup vim script is in a subdirectory of this repo called vim.
-	" Pass the path to set the runtimepath properly.
-	Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-	Plugin 'leafgarland/typescript-vim'
-	" Install L9 and avoid a Naming conflict if you've already installed a
-	" different version somewhere else.
-	" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-	" All of your Plugins must be added before the following line
-	call vundle#end()            " required
-	filetype plugin indent on    " required
-	" To ignore plugin indent changes, instead use:
-	"filetype plugin on
-	"
-	" Brief help
-	" :PluginList       - lists configured plugins
-	" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-	" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-	" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-	"
-	" see :h vundle for more details or wiki for FAQ
-	" Put your non-Plugin stuff after this line
+" Install all vim-plug plugins
+" https://medium.com/@huntie/10-essential-vim-plugins-for-2018-39957190b7a9
+call plug#begin('~/.vim/plugged')
+	Plug 'junegunn/fzf' " Fuzzy search files
+	Plug 'junegunn/fzf.vim'
+	Plug 'itchyny/lightline.vim' " A new status line
+	Plug 'terryma/vim-multiple-cursors' " Selecting multiple regions at once
+	Plug 'tpope/vim-eunuch' " File creation commands
+	Plug 'scrooloose/nerdtree' " See the file tree
+	Plug 'editorconfig/editorconfig-vim' " Local configuration files per project
+	Plug 'w0rp/ale' " Asynchronous Lint Engine
+	Plug 'airblade/vim-gitgutter' " Git status in the gutter
+call plug#end()
