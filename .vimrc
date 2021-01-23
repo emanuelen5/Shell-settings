@@ -2,7 +2,7 @@ syntax on
 
 set nocompatible " use extended function of vim (not compatible with vi)
 set backup " take backup. if not, specify [ set nobackup ]
-set backupdir=~/.backup  " specify backup directory
+set backupdir=~/.bak  " specify backup directory
 " set hlsearch " Highlight all matches in search
 set incsearch " use incremental search
 
