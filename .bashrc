@@ -11,8 +11,12 @@ export PATH="$PATH:~/bin"
 . ~/bin/PS1_setup.sh
 . ~/bin/cd_enter_exit.sh
 
-# Removing ^s as suspend terminal
-stty -ixon
+# Removing ^s as suspend terminal, and instead using it as forward-i-search
+# https://unix.stackexchange.com/questions/73498/how-to-cycle-through-reverse-i-search-in-bash
+# https://stackoverflow.com/questions/24623021/getting-stty-standard-input-inappropriate-ioctl-for-device-when-using-scp-thro
+[[ $- == *i* ]] && stty -ixon
+
+alias clc='reset;clear;clear;'
 
 # Improving history
 export HISTSIZE=10000
