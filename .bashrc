@@ -29,7 +29,7 @@ set bell-style visible
 alias start-ssh-agent=". ~/bin/ssh_agent_load.sh"
 alias ssh-add-keys='ssh-add $(cat ~/.ssh-keys.list 2>/dev/null) || ssh-add'
 alias sshag="start-ssh-agent "
-start-ssh-agent -r > /dev/null
+~/bin/ssh_agent_load.sh -r > /dev/null
 
 # Nice commands
 alias where='echo -e "\b\r\e[K$YELLOW$USER$RED@$GREEN$HOSTNAME:$BLUE$PWD$NC "'
