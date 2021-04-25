@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-links=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc
+links=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship
 
 init: init-links init-vundle init-bak
 

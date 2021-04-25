@@ -58,4 +58,8 @@ if [ -f ~/.bashrc.local ]; then
 	. ~/.bashrc.local
 fi
 
-eval "$(starship init bash)"
+# Starship configuration
+export STARSHIP_CONFIG=~/.starship
+if [ -f $STARSHIP_CONFIG ]; then
+	eval "$(starship init bash)"
+fi
