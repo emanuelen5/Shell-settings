@@ -24,6 +24,7 @@ au BufReadPost * normal zR
 "" File types
 au BufRead,BufNewFile *.ts setfiletype typescript
 au Filetype makefile source ~/.vim/makefile.vim
+au BufRead,BufNewFile *.cmake,CMakeLists.txt setfiletype cmake
 
 " Lightline
 set laststatus=2
