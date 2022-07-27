@@ -1,16 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 # Use argument "-r" to only try to restore, not create a new process
 # User argument "-R" to restart (kill existing agents, and start a new)
 
-# Attempt to find old agents
+# Attempt to find old agents (not zombies though, cause they can't be connected to)
 find_ssh_agents () {
-  ps x | grep -P "\d ssh-agent" |
-    sed "$ d" | # Remove last line (current command will match as well)
-    sed -rn 's/ *([0-9]+).*/\1/p' | # Get PIDs
-  while read pid; do
-    echo "$pid";
+  pgrep ssh-agent |
+  while read p; do
+    # Filter out zombies
+    if ! [[ $(ps -p $p -o stat=) =~ [Z] ]]; then
+      echo $p;
+    fi
   done
 }
+
+echo "Open SSH agents: $(find_ssh_agents | tr '\n' ' ')"
 
 # Get the corresponding SSH_AUTH_SOCKET for a PID
 get_ssh_auth_socket () {
