@@ -2,7 +2,7 @@ SHELL := /bin/bash
 MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 links=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship
 
-init: init-links init-vundle init-bak
+init: init-links init-vundle init-bak init-starship
 
 init-links: ${links}
 	@echo "Setting up symbolic links for files in ${HOME}"
@@ -12,6 +12,11 @@ init-vundle: ~/.vim/autoload/plug.vim
 ~/.vim/autoload/plug.vim:
 	curl -fLo $@ --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+init-starship: .starship.installed
+.starship.installed:
+	./install_starship.sh
+	touch $@
 
 init-bak: ~/.bak
 ~/.bak:
