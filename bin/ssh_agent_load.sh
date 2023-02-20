@@ -4,7 +4,7 @@
 
 # Attempt to find old agents (not zombies though, cause they can't be connected to)
 find_ssh_agents () {
-  pgrep ssh-agent |
+  pgrep -r S,R ssh-agent |
   while read p; do
     # Filter out zombies
     if ! [[ $(ps -p $p -o stat=) =~ [Z] ]]; then
