@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-LINKS=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship .tmux.conf
+LINKS=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship .tmux.conf .bash_aliases .inputrc .zshrc
 LINK_BUILD_TARGETS := $(addprefix build/,$(notdir $(LINKS)))
 
 init: init-links init-vundle init-bak init-starship
