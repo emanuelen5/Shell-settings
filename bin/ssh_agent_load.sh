@@ -41,6 +41,8 @@ if [ -z "$TMP_RESTART" ] && [ `find_ssh_agents | wc -l` -gt 0 ]; then
   fi
 
   echo "Restoring agent $SSH_AGENT_PID ($SSH_AUTH_SOCK)"
+  export SSH_AGENT_PID
+  export SSH_AUTH_SOCK
 
 elif [ -n "$TMP_RESTORE" ]; then
 
