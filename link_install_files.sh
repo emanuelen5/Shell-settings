@@ -8,9 +8,9 @@ link_install_file () {
 	file="$1"
 	dir=$(cd -P $(dirname "$file"); pwd)
 
-	if [ -L "$new_file" ]; then
-		ln -sfn "$dir/$file" "$new_file"
-		echo " ${GREEN_MARK} Refreshed symbolic link for '$file'"
+	# The symbolic link already point to the correct file
+	if [ -L "$new_file" -a "$new_file" -ef "$file" ]; then
+		echo " ${GREEN_MARK} Already up to date '$file'"
 		return
 	fi
 
@@ -27,8 +27,14 @@ link_install_file () {
 		fi
 	fi
 
-	ln -s "$dir/$file" "$new_file"
-	echo " ${GREEN_MARK} Created symbolic link for '$file'"
+	if [ -L "$new_file" ]; then
+		ln -sfn "$dir/$file" "$new_file"
+		echo " ${GREEN_MARK} Corrected symbolic link for '$file'"
+		return
+	else
+		ln -s "$dir/$file" "$new_file"
+		echo " ${GREEN_MARK} Created symbolic link for '$file'"
+	fi
 }
 
 for link in $links; do
