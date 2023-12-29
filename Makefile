@@ -1,12 +1,18 @@
 SHELL := /bin/bash
 MAKEFILE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-links=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship .tmux.conf
+LINKS=.gitconfig .gitexclude .bashrc .vimrc bin .screenrc .starship .tmux.conf
+LINK_BUILD_TARGETS := $(addprefix build/,$(notdir $(LINKS)))
 
 init: init-links init-vundle init-bak init-starship
 
-init-links: ${links}
-	@echo "Setting up symbolic links for files in ${HOME}"
-	@./link_install_files.sh $(shell pwd) $^
+init-links: ${LINK_BUILD_TARGETS}
+build/%: % build/.mkdir
+	@./link_install_files.sh $<
+	@touch $@
+
+build/.mkdir:
+	mkdir -p build
+	touch $@
 
 init-vundle: ~/.vim/autoload/plug.vim
 ~/.vim/autoload/plug.vim:
