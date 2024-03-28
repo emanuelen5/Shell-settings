@@ -2,6 +2,9 @@ name: Run BATS tests
 
 on:
   push:
+    branches:
+      - main
+      - Ubuntu
   pull_request:
     types:
       - opened
