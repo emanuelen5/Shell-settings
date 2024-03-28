@@ -58,7 +58,7 @@ fi
 if ! "$(command -v direnv)" &>/dev/null; then
 	echo "direnv is not installed" >&2
 else
-	eval "$(direnv hook bash)"
+	eval "$(direnv hook zsh)"
 fi
 
 source ~/bin/tmux_functions.sh
