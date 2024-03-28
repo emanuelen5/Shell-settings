@@ -19,6 +19,8 @@ SAVEHIST=10000
 setopt appendhistory beep nomatch notify
 unsetopt autocd extendedglob
 bindkey -e
+# Make it like bash when pressing Ctrl+U
+bindkey \^U backward-kill-line
 # End of lines configured by zsh-newuser-install
 
 ZSH_THEME="robbyrussell"
