@@ -2,6 +2,9 @@
 # Use argument "-r" to only try to restore, not create a new process
 # User argument "-R" to restart (kill existing agents, and start a new)
 
+# Clean up old SSH pid's
+find /tmp/ssh-* -mtime +1 -type s -delete
+
 # Attempt to find old agents (not zombies though, cause they can't be connected to)
 find_ssh_agents () {
   pgrep -r S,R ssh-agent |
