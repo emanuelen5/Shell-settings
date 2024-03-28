@@ -13,6 +13,5 @@ alias mkvenv='create_venv.sh'
 
 # Linking scripts
 alias start-ssh-agent=". ~/bin/ssh_agent_load.sh"
-alias ssh-add-keys='cat ~/.ssh-keys.list | while read key; do ssh-add -l | grep -q $(ssh-keygen -lf $key  | awk "{print \$2}") || ssh-add $key; done'
 alias sshag="start-ssh-agent "
 

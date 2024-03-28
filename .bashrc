@@ -79,4 +79,3 @@ else
 fi
 
 source ~/bin/tmux_functions.sh
-

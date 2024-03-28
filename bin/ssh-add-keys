@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -x
+
+cat ~/.ssh-keys.list |
+while read key; do
+	if ! ssh-add -l | grep -q $(ssh-keygen -lf $key  | awk "{print \$2}"); then
+		echo "'$key' has not been added to the ssh-agent yet. Adding it now..."
+		ssh-add $key
+	fi
+done
+
