@@ -9,10 +9,8 @@
 	excludesfile = /home/emaus/.gitexclude
 [alias]
 	f = fetch --prune --all
-	log2 = log --graph --decorate
 	graph-this = log --graph --decorate --oneline --full-history
-	graph-all = !git graph-this --all
-	graph = log --all --date=short --graph --pretty=format:'%C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d' -n 10
+	graph = log --all --date=short --graph --pretty=format:'%C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d'
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	nocommit = log server..master
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
