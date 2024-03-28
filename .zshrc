@@ -63,5 +63,14 @@ fi
 
 source ~/bin/tmux_functions.sh
 
+# direnv + virtual env
+setopt PROMPT_SUBST
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env) '$PS1
+
 # Restore SSH agent if configured
 sshag
