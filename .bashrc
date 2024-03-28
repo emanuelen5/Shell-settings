@@ -55,7 +55,7 @@ function mkcd () {
   if [ $# -lt 1 ]; then
     return
   fi
-  mkdir $@
+  mkdir "$@"
   cd "${@: -1}"
 }
 
