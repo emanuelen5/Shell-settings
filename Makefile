@@ -29,7 +29,6 @@ init-bak: ~/.bak
 	mkdir $@
 
 test:
-	bats ${MAKEFILE_DIR}/bin/tests/cd_enter_exit.bats
-	bats ${MAKEFILE_DIR}/bin/tests/ps1_git_status.bats
+	bats -r ${MAKEFILE_DIR}/tests
 
 .PHONY: init init-links init-vundle test
