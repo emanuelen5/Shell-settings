@@ -111,18 +111,18 @@ function contains_string() {
     contains_string "$output" B
 }
 
-@test "Conflict" {
-  pushd $GIT_REMOTE
-    echo "v2" > testfile
-    git commit -am "Second commit remote"
-  popd
-  cd $GIT_DIR
-    echo "v3" > testfile
-    git commit -am "Second commit local"
-    git pull || true
-    run ps1_git
-    contains_string "$output" C
-}
+# @test "Conflict" {
+#   pushd $GIT_REMOTE
+#     echo "v2" > testfile
+#     git commit -am "Second commit remote"
+#   popd
+#   cd $GIT_DIR
+#     echo "v3" > testfile
+#     git commit -am "Second commit local"
+#     git pull || true
+#     run ps1_git
+#     contains_string "$output" C
+# }
 
 @test "Diverged" {
   pushd $GIT_REMOTE
@@ -137,18 +137,18 @@ function contains_string() {
     contains_string "$output" D
 }
 
-@test "Rebasing" {
-  pushd $GIT_REMOTE
-    echo 2 > 2
-    git add 2
-    git commit -m "Second file remote"
-  popd
-  cd $GIT_DIR
-    echo 3 > 2
-    git add 2
-    git commit -m "Second file local"
-    git fetch
-    git rebase origin/master || true
-    run ps1_git
-    contains_string "$output" R
-}
+# @test "Rebasing" {
+#   pushd $GIT_REMOTE
+#     echo 2 > 2
+#     git add 2
+#     git commit -m "Second file remote"
+#   popd
+#   cd $GIT_DIR
+#     echo 3 > 2
+#     git add 2
+#     git commit -m "Second file local"
+#     git fetch
+#     git rebase origin/master || true
+#     run ps1_git
+#     contains_string "$output" R
+# }

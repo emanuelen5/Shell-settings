@@ -1,0 +1,30 @@
+name: Run BATS tests
+
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Checkout BATS
+      uses: actions/checkout@v4
+      with:
+        repository: bats-core/bats-core
+        ref: master
+        path: .bats-core
+
+    - name: Run BATS test
+      run: |
+        git config --global user.email "github-runner@example.com"
+        git config --global user.name "Github runner"
+        git config --global pull.rebase true
+        .bats-core/bin/bats -r tests
