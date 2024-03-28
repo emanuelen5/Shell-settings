@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 links=$*
 
 GREEN_MARK=$(echo -en '\e[32m\u2713\e[0m')
