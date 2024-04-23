@@ -29,8 +29,6 @@ export HISTTIMEFORMAT="(%Y-%m-%d %T) "
 # For stopping annoying loud bells
 set bell-style visible
 
-~/bin/ssh_agent_load.sh -r
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -79,3 +77,19 @@ else
 fi
 
 source ~/bin/tmux_functions.sh
+
+
+# Host-specific setup
+case "$(uname -s)" in
+    Linux*) # Linux
+		~/bin/restore-ssh-agent.lin.sh -r
+		;;
+    Darwin*) # Mac
+		;;
+    CYGWIN*|MINGW*|MSYS_NT*) # Windows
+		. bin/restore-ssh-agent.windows.sh
+		;;
+    *) # Unknown
+		;;
+esac
+
