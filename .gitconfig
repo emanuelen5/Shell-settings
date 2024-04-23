@@ -7,20 +7,21 @@
 [core]
 	autocrlf = input
 	excludesfile = /home/emaus/.gitexclude
+	quotepath = off
+	pager = less
 [alias]
 	f = fetch --prune --all
-	graph-this = log --graph --decorate --oneline --full-history
-	graph = log --all --date=short --graph --pretty=format:'%C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d'
+	graph = log --all --date=short --graph
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	nocommit = log server..master
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
 	now = ! GIT_COMMITTER_DATE=\"`date`\" git commit --amend --date \"`date`\"
 	diffs = diff --stat
-	graph2 = log --graph --pretty=format:'%C(yellow)%h %Cred%<(50,trunc)%s%C(cyan)%<(30,trunc)%d%n        %Creset%ad, %<(15)%ar %Cgreen%an' --date=short
 	checkback = ! git_checkback.sh
 	cup = commit --amend --no-edit
-        ri = rebase -i
-        ris = rebase -i --autosquash
+	ri = rebase -i
+	fpwl = push --force-with-lease
+	ris = rebase --interactive
 [diff]
 	tool = vimdiff
 [push]
@@ -28,9 +29,19 @@
 [log]
 	follow = true
 	decorate = short
+	date = short
+	abbrevCommit = true
+	mailmap = true
 [credential]
 	helper = cache --timeout=3600
 [init]
 	defaultBranch = main
 [rerere]
 	enabled = true
+[rebase]
+	updateRefs = true
+	autoSquash = true
+[format]
+	pretty = %C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d
+[mailmap]
+	file = ~/.mailmap
