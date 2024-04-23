@@ -1,0 +1,94 @@
+{
+    "workbench.startupEditor": "none",
+
+    // Terminal settings
+    "terminal.external.windowsExec": "C:\\cygwin64\\Cygwin.bat",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Cygwin": {
+            "path": "C:\\cygwin64\\Cygwin.bat",
+            "overrideName": true,
+            "color": "terminal.ansiGreen",
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Cygwin",
+    "terminal.integrated.scrollback": 100000,
+
+    // Remote settings
+    "remote.SSH.configFile": "C:\\cygwin64\\home\\emaus\\.ssh\\config",
+    "remote.SSH.enableRemoteCommand": true,
+    "remote.SSH.showLoginTerminal": true,
+    "terminal.integrated.env.windows": {
+        "DISPLAY": "127.0.0.1:0.0"
+    },
+    "remote.SSH.remotePlatform": {
+        "*": "linux"
+    },
+
+    // Terminal misc settings
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "search.showLineNumbers": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.allowChords": false,  // Don't use ^K in terminal
+
+    // Editor settings
+    "workbench.tree.indent": 30,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "files.trimTrailingWhitespace": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "files.eol": "\n",
+
+    // Language specific settings
+    "[javascript]": {
+        "editor.maxTokenizationLineLength": 2500,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "python.analysis.addImport.exactMatchOnly": true,
+    "python.analysis.addImport.heuristics": true,
+    "python.analysis.autoImportCompletions": true,
+
+    // Git settings
+    "git.openRepositoryInParentFolders": "never",
+
+    // Extensions
+    "ruff.showNotifications": "onError",
+
+    // Jupyter settings
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "jupyter.askForKernelRestart": false,
+}
