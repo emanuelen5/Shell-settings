@@ -1,5 +1,6 @@
 [ -f /etc/skel/.bashrc ] && source /etc/skel/.bashrc
 . ~/bin/bash_colors.sh
+. ~/bin/hostname.sh
 
 
 # If not running interactively, don't do anything
@@ -77,19 +78,4 @@ else
 fi
 
 source ~/bin/tmux_functions.sh
-
-
-# Host-specific setup
-case "$(uname -s)" in
-    Linux*) # Linux
-		~/bin/restore-ssh-agent.lin.sh -r
-		;;
-    Darwin*) # Mac
-		;;
-    CYGWIN*|MINGW*|MSYS_NT*) # Windows
-		. bin/restore-ssh-agent.windows.sh
-		;;
-    *) # Unknown
-		;;
-esac
 

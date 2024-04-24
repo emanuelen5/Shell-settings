@@ -1,5 +1,7 @@
 export ZSH=${HOME}/.oh-my-zsh
 
+. ~/bin/hostname.sh
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
