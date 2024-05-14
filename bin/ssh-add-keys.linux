@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
-set -x
 
-cat ~/.ssh-keys.list |
-while read key; do
-	if ! ssh-add -l | grep -q $(ssh-keygen -lf $key  | awk "{print \$2}"); then
-		echo "'$key' has not been added to the ssh-agent yet. Adding it now..."
-		ssh-add $key
-	fi
-done
+keys_to_add=$(
+	cat ~/.ssh-keys.list |
+	while read key; do
+		fingerprint=$(ssh-keygen -lf $key  | awk "{print \$2}")
+		if ! ssh-add -l | grep -q "$fingerprint"; then
+			echo "$key"
+		fi
+	done
+)
 
+key_count=$(echo -n "$keys_to_add" | wc -l)
+if [ -z "$keys_to_add" ]; then
+	echo "No keys to add"
+	exit 0
+fi
+
+echo "Keys to add ($key_count): $keys_to_add"
+echo "$keys_to_add" | xargs ssh-add
