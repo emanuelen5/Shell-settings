@@ -45,3 +45,5 @@
 	pretty = %C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d
 [mailmap]
 	file = ~/.mailmap
+[pull]
+	ff = only
