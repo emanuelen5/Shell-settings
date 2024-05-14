@@ -79,3 +79,7 @@ fi
 
 source ~/bin/tmux_functions.sh
 
+# Restore the SSH session with keys
+start-ssh-agent
+ssh-add-keys
+

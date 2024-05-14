@@ -74,5 +74,6 @@ show_virtual_env() {
 }
 PS1='$(show_virtual_env) '$PS1
 
-# Restore SSH agent if configured
-sshag
+# Restore the SSH session with keys
+start-ssh-agent
+ssh-add-keys
