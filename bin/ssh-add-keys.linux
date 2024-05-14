@@ -17,4 +17,5 @@ if [ -z "$keys_to_add" ]; then
 fi
 
 echo "Keys to add ($key_count): $keys_to_add"
-echo "$keys_to_add" | xargs ssh-add
+# Environment variable set to force to use terminal instead of trying X program
+echo "$keys_to_add" | xargs env SSH_ASKPASS_REQUIRE=never ssh-add
