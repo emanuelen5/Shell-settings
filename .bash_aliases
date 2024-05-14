@@ -13,5 +13,4 @@ alias mkvenv='create_venv.sh'
 
 # Linking scripts
 alias start-ssh-agent=". ~/bin/restore-ssh-agent.$host.sh"
-alias sshag="start-ssh-agent "
-
+alias sshag="ssh-add-keys.$host "

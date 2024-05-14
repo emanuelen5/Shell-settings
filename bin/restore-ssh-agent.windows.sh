@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function get_ssh_agent_status() {
     ssh-add -l &> /dev/null; echo $?
 }
@@ -35,7 +37,7 @@ else
             echo -n "kill=${SSH_AGENT_PID}, "
             kill ${SSH_AGENT_PID}
         fi
-        
+
         unset pid
     done
 
@@ -51,45 +53,3 @@ else
     setx SSH_AUTH_SOCK "$SSH_AUTH_SOCK" &>/dev/null
 
 fi
-
-function sshadd() {
-    # Add SSH keys if they are missing
-
-    read -sp "ssh-password: " _password
-    echo "OK"
-
-    # Check that keys are added as well
-    cat ~/.ssh-keys.list | while read f; do
-        echo -n "Checking key file $f: "
-
-        ssh-add -l | grep -q "$(ssh-keygen -f "${f}" -l | cut -d' ' -f-2)"
-
-        if [ $? -ne 0 ]; then
-            echo "adding"
-            expect <<EOD
-                # Environment variable set to force to use terminal instead of trying X program
-                spawn -noecho env SSH_ASKPASS_REQUIRE=never ssh-add "${f}"
-                expect -nocase {passphrase} {
-                    ## Get password interactively if it is required.
-                    ## DOES NOT WORK! expect_user and gets do not wait for input!?
-
-                    # if {! [info exists _password]} {
-                    #     stty -echo
-                    #     send_user "key needs password: "
-                    #     set _password [gets stdin]
-                    #     expect_user -re "(.*)\\r"
-                    #     set _password \$expect_out(1,string)
-                    #     stty echo
-                    # }
-                    send -- "$_password\r"
-                }
-
-                expect eof
-EOD
-        else
-            echo "OK"
-        fi
-    done
-
-    unset _password
-}
