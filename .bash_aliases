@@ -11,6 +11,10 @@ alias trim-trailing-spaces="sed -i 's/[[:space:]]*\$//'"
 alias venv='source venv/bin/activate'
 alias mkvenv='create_venv.sh'
 
-# Linking scripts
+# SSH agent commands
 alias start-ssh-agent=". ~/bin/restore-ssh-agent.$host.sh"
-alias sshag="ssh-add-keys.$host "
+alias ssh-add-keys="ssh-add-keys.$host "
+function sshag() {
+    start-ssh-agent
+    ssh-add-keys
+}
