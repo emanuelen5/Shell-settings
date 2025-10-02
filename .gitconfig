@@ -2,6 +2,8 @@
 [user]
 	name = Erasmus Cedernaes
 	email = erasmus.cedernaes@gmail.com
+[branch]
+    sort = -authordate
 [color]
 	ui = auto
 [core]
