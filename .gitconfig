@@ -1,5 +1,8 @@
 # This is Git's per-user configuration file.
 [alias]
+    archeology = blame -w -f -n -M -C -C -C
+    blame-hard = blame -w -f -n -M -C
+    bup = branch --unset-upstream
 	cup = commit --amend --no-edit
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	f = fetch --prune --all
@@ -7,6 +10,7 @@
 	graph = log --all --date=short --graph
 	ri = rebase -i
 	ris = rebase --interactive
+    subup = submodule update --init --recursive
 [branch]
     sort = -authordate
 [color]
