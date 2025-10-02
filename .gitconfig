@@ -26,7 +26,7 @@
 [diff]
 	tool = vimdiff
 [format]
-	pretty = %C(auto)%h %C(auto,blue)%>(10,trunc)%ad %C(auto,green)%<(10,trunc)%aN %C(auto)%s%C(auto)%gD%d
+	pretty = format:%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(12,trunc)%aN %C(auto,reset)%s %C(auto,red)% gD% D
 [init]
 	defaultBranch = main
 [log]
