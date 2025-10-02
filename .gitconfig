@@ -1,15 +1,10 @@
 # This is Git's per-user configuration file.
 [alias]
-	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
-	diffs = diff --stat
-	checkback = ! git_checkback.sh
 	cup = commit --amend --no-edit
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	f = fetch --prune --all
 	fpwl = push --force-with-lease
 	graph = log --all --date=short --graph
-	nocommit = log server..master
-	now = ! GIT_COMMITTER_DATE=\"`date`\" git commit --amend --date \"`date`\"
 	ri = rebase -i
 	ris = rebase --interactive
 [branch]
