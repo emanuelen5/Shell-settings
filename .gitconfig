@@ -46,6 +46,11 @@
 	ff = only
 [push]
 	default = current
+[stgit "alias"]
+    spr = !stg spill && git reset
+    ri = refresh --index
+    rp = !git add -p && stg refresh --index
+    s = series -e -d -I -i
 [user]
 	name = Erasmus Cedernaes
 	email = erasmus.cedernaes@gmail.com
