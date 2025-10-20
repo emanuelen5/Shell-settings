@@ -9,7 +9,6 @@ alias ls='ls --color'
 alias trim-trailing-spaces="sed -i 's/[[:space:]]*\$//'"
 
 alias venv='source venv/bin/activate'
-alias mkvenv='create_venv.sh'
 
 # SSH agent commands
 alias start-ssh-agent=". ~/bin/restore-ssh-agent.$host.sh"
