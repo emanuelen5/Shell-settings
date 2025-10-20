@@ -3,7 +3,7 @@ syntax on
 set nocompatible " use extended function of vim (not compatible with vi)
 set backup " take backup. if not, specify [ set nobackup ]
 set backupdir=~/.bak  " specify backup directory
-" set hlsearch " Highlight all matches in search
+set hlsearch " Highlight all matches in search
 set incsearch " use incremental search
 
 set tabstop=4 softtabstop=4 noexpandtab shiftwidth=4 autoindent smartindent smarttab " Use tabs as indentation
