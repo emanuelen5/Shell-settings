@@ -57,8 +57,9 @@ $shell
 $character"""
 
 [character]
-success_symbol = "[✓ \\$](bold green)"
-error_symbol = "[✗ \\$](bold red)"
+format = '$symbol ' # It's a NBSP instead of regular space at the end to get tmux "copy last command" work: https://ianthehenry.com/posts/tmux-copy-last-command/
+success_symbol = '[\$](bold green)'
+error_symbol = '[\$](bold red)'
 
 [hostname]
 ssh_only = false
