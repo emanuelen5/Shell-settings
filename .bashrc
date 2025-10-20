@@ -1,7 +1,4 @@
 [ -f /etc/skel/.bashrc ] && source /etc/skel/.bashrc
-. ~/bin/bash_colors.sh
-. ~/bin/hostname.sh
-
 
 # If not running interactively, don't do anything
 case $- in
@@ -14,9 +11,6 @@ export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export umask=002
 export PATH="$PATH:~/bin"
-
-# Setting up a clean terminal
-. ~/bin/PS1_setup.sh
 
 # Removing ^s as suspend terminal, and instead using it as forward-i-search
 # https://unix.stackexchange.com/questions/73498/how-to-cycle-through-reverse-i-search-in-bash
@@ -32,6 +26,7 @@ export HISTCONTROL="ignoredups:erasedups:ignorespace"
 # For stopping annoying loud bells
 set bell-style visible
 
+. ~/bin/hostname.sh
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -69,6 +64,8 @@ fi
 export STARSHIP_CONFIG=~/.starship
 if ! "$(command -v starship)" &>/dev/null; then
 	echo "starship is not installed" >&2
+	. ~/bin/bash_colors.sh
+	. ~/bin/PS1_setup.sh
 elif [ -f $STARSHIP_CONFIG ]; then
 	eval "$(starship init bash)"
 fi

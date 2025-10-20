@@ -1,4 +1,6 @@
-case "$(uname -s)" in
+host="$(uname -s)"
+
+case "$host" in
     Linux*) # Linux
 		host=linux
 		;;
@@ -9,6 +11,7 @@ case "$(uname -s)" in
 		host=windows
 		;;
     *) # Unknown
+		echo "Unknown host=$host"
 		;;
 esac
 
