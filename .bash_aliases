@@ -18,3 +18,11 @@ function sshag() {
     start-ssh-agent
     ssh-add-keys
 }
+
+function mkcd () {
+  if [ $# -lt 1 ]; then
+    return
+  fi
+  mkdir "$@"
+  cd "${@: -1}"
+}

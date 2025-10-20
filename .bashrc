@@ -46,15 +46,6 @@ for file in /etc/bash_completion.d/* ; do
     source "$file"
 done
 
-# More custom commands
-function mkcd () {
-  if [ $# -lt 1 ]; then
-    return
-  fi
-  mkdir "$@"
-  cd "${@: -1}"
-}
-
 # Local configuration for the machine
 if [ -f ~/.bashrc.local ]; then
 	. ~/.bashrc.local
