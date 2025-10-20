@@ -23,9 +23,11 @@ export PATH="$PATH:~/bin"
 # https://stackoverflow.com/questions/24623021/getting-stty-standard-input-inappropriate-ioctl-for-device-when-using-scp-thro
 [[ $- == *i* ]] && stty -ixon
 
-# Improving history
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
 export HISTSIZE=10000
 export HISTTIMEFORMAT="(%Y-%m-%d %T) "
+export HISTCONTROL="ignoredups:erasedups:ignorespace"
 
 # For stopping annoying loud bells
 set bell-style visible
