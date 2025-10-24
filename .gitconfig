@@ -56,5 +56,5 @@
     s = series -e -d -I -i
     spr = !stg spill && git reset
 [user]
-	email = erasmus.cedernaes@gmail.com
 	name = Erasmus Cedernaes
+	email = github@emaus.dev
