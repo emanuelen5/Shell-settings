@@ -22,6 +22,8 @@ shopt -s histappend
 export HISTSIZE=10000
 export HISTTIMEFORMAT="(%Y-%m-%d %T) "
 export HISTCONTROL="ignoredups:erasedups:ignorespace"
+# Append to history after each command
+export PROMPT_COMMAND='history -a'
 
 # For stopping annoying loud bells
 set bell-style visible
