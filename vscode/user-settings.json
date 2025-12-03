@@ -66,6 +66,7 @@
         "source.organizeImports": "explicit"
     },
     "files.eol": "\n",
+    "vim.easymotion": true,
     "vim.hlsearch": true,
     "vim.handleKeys": {
         "<C-d>": true,
