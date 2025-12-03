@@ -2,6 +2,7 @@
     "workbench.startupEditor": "none",
     "window.title": "${dirty}${rootNameShort}${separator}${remoteName}",
     "window.titleSeparator": " | ",
+    "window.border": "hsla(30, 100%, 19%, 1.00)"
 
     // Terminal settings
     "terminal.external.windowsExec": "C:\\cygwin64\\Cygwin.bat",
