@@ -114,6 +114,4 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "jupyter.askForKernelRestart": false,
-
-    // StGit complementary settings
 }
