@@ -1,5 +1,7 @@
 {
     "workbench.startupEditor": "none",
+    "window.title": "${dirty}${rootNameShort}${separator}${remoteName}",
+    "window.titleSeparator": " | ",
 
     // Terminal settings
     "terminal.external.windowsExec": "C:\\cygwin64\\Cygwin.bat",
