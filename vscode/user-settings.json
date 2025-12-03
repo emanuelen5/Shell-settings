@@ -107,6 +107,17 @@
     "diffEditor.codeLens": true,
 
     // Extensions
+    "gitlens.views.repositories.showRemotes": false,
+    "gitlens.views.repositories.showTags": false,
+    "gitlens.views.repositories.showStashes": false,
+    "gitlens.views.repositories.showContributors": false,
+    "gitlens.advanced.blame.customArguments": [
+        "-w",
+        "-n",
+        "-M",
+        "-C"
+    ],
+
     "ruff.showNotifications": "onError",
 
     // Jupyter settings
