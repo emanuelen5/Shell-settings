@@ -67,6 +67,11 @@
     },
     "files.eol": "\n",
     "vim.hlsearch": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false
+    },
 
     // Language specific settings
     "[dockercompose]": {
@@ -108,4 +113,6 @@
         "*.ipynb": "jupyter.notebook.ipynb"
     },
     "jupyter.askForKernelRestart": false,
+
+    // StGit complementary settings
 }
