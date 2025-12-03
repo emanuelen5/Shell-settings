@@ -119,6 +119,7 @@
     ],
 
     "ruff.showNotifications": "onError",
+    "js/ts.hover.maximumLength": 5000,
 
     // Jupyter settings
     "workbench.editorAssociations": {
