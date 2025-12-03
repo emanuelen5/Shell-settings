@@ -32,6 +32,7 @@
     },
     "terminal.integrated.defaultProfile.windows": "Cygwin",
     "terminal.integrated.scrollback": 100000,
+    "terminal.integrated.stickyScroll.enabled": false,
 
     // Remote settings
     "remote.SSH.configFile": "C:\\cygwin64\\home\\emaus\\.ssh\\config",
