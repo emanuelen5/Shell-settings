@@ -8,7 +8,7 @@
 	diffword = diff --word-diff-regex='[A-Za-z0-9_]+|[^[:space:]]' --word-diff=color
 	f = fetch --prune --all
 	fpwl = push --force-with-lease
-	graph = log --all --date=short --graph
+	graph = log --date=short --graph --exclude=refs/stacks/* --all
 	now = ! GIT_COMMITTER_DATE=\"$(date)\" git commit --amend --date \"$(date)\"
 	ri = rebase -i
 	ris = rebase --interactive
