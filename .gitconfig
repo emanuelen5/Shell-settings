@@ -1,5 +1,6 @@
 # This is Git's per-user configuration file.
 [alias]
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | sort | grep --color -E '^\\w*'
     archeology = blame -w -f -n -M -C -C -C
     blame-hard = blame -w -f -n -M -C
     bup = branch --unset-upstream
@@ -8,6 +9,7 @@
 	f = fetch --prune --all
 	fpwl = push --force-with-lease
 	graph = log --all --date=short --graph
+	now = ! GIT_COMMITTER_DATE=\"$(date)\" git commit --amend --date \"$(date)\"
 	ri = rebase -i
 	ris = rebase --interactive
     subup = submodule update --init --recursive
