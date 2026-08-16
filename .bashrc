@@ -10,7 +10,7 @@ esac
 export EDITOR=$(which vim)
 export VISUAL=$(which vim)
 export umask=002
-export PATH="$PATH:~/bin"
+export PATH="$PATH:~/bin:~/local/bin"
 
 # Removing ^s as suspend terminal, and instead using it as forward-i-search
 # https://unix.stackexchange.com/questions/73498/how-to-cycle-through-reverse-i-search-in-bash
