@@ -53,7 +53,7 @@
 [stgit "alias"]
     ri = refresh --index
     rp = !git add -p && stg refresh --index
-    s = series -e -d -I -i
+	s = series -i -d -e -I -O
     spr = !stg spill && git reset
 [user]
 	name = Erasmus Cedernaes
