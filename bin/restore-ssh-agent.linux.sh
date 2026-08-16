@@ -22,23 +22,23 @@ echo "Open SSH agents: $(find_ssh_agents | tr '\n' ' ')"
 get_ssh_auth_socket () {
   ssh_agent_pid="$1"
   expected_socket_id=$(($ssh_agent_pid - 1))
-  echo `find /tmp/ -type s -name "agent.$expected_socket_id" 2>/dev/null`
+  echo $(find /tmp/ -type s -name "agent.$expected_socket_id" 2>/dev/null)
 }
 
-TMP_RESTORE=`echo "$@" | grep -Po '\-[^-]*r'`
-TMP_RESTART=`echo "$@" | grep -Po '\-[^-]*R'`
+TMP_RESTORE=$(echo "$@" | grep -Po '\-[^-]*r')
+TMP_RESTART=$(echo "$@" | grep -Po '\-[^-]*R')
 
 if [ -n "$TMP_RESTART" ]; then
-  kill $(find_ssh_agents)
+  kill "$(find_ssh_agents)"
 fi
 
 # Check if there are any open agents
-if [ -z "$TMP_RESTART" ] && [ `find_ssh_agents | wc -l` -gt 0 ]; then
+if [ -z "$TMP_RESTART" ] && [ "$(find_ssh_agents | wc -l)" -gt 0 ]; then
 
   # Recover the first one's ID and file handle
-  SSH_AGENT_PID=`find_ssh_agents | sort -n | head -1`
-  SSH_AUTH_SOCK=`get_ssh_auth_socket $SSH_AGENT_PID`
-  if [ -z "`ps --pid $SSH_AGENT_PID | grep 'ssh-agent'`" ]; then
+  SSH_AGENT_PID=$(find_ssh_agents | sort -n | head -1)
+  SSH_AUTH_SOCK=$(get_ssh_auth_socket "$SSH_AGENT_PID")
+  if [ -z "$(ps --pid "$SSH_AGENT_PID" | grep 'ssh-agent')" ]; then
     echo "Could not find the process corresponding to the agent..."
     echo "Something might be wrong."
   fi
@@ -56,7 +56,7 @@ else
   unset SSH_AGENT_PID
 
   ## Start the SSH agent
-  eval `ssh-agent -s` >& /dev/null
+  eval "$(ssh-agent -s)" >& /dev/null
 
   if [ -n "$SSH_AGENT_PID" ]; then
     echo "Added new agent $SSH_AGENT_PID ($SSH_AUTH_SOCK)"
