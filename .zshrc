@@ -77,3 +77,7 @@ PS1='$(show_virtual_env) '$PS1
 # Restore the SSH session with keys
 start-ssh-agent
 ssh-add-keys
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
